@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_navigation_nav_groups",
+  "info": {
+    "name": "navGroup",
+    "icon": "bars"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component.link"
+    }
+  }
+}

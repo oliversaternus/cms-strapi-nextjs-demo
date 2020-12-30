@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_integrations_chats",
+  "info": {
+    "name": "Chat",
+    "icon": "grin-alt"
+  },
+  "options": {},
+  "attributes": {
+    "TawkToID": {
+      "type": "string"
+    },
+    "enabled": {
+      "type": "boolean"
+    }
+  }
+}

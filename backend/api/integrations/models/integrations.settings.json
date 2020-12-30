@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "integrations",
+  "info": {
+    "name": "Integrations"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "Analytics": {
+      "type": "component",
+      "repeatable": false,
+      "component": "integrations.google-analytics"
+    },
+    "Chat": {
+      "type": "component",
+      "repeatable": false,
+      "component": "integrations.chat"
+    }
+  }
+}

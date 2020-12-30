@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "name": "Page",
+    "displayName": "Seiten",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "path": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": "string"
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "section.hero",
+        "section.gallery",
+        "section.text-with-image",
+        "section.quote",
+        "section.banner",
+        "section.text",
+        "section.contact",
+        "section.cards",
+        "section.location"
+      ]
+    }
+  }
+}

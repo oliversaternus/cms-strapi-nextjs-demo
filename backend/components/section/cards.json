@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_section_cards",
+  "info": {
+    "name": "Cards",
+    "icon": "images"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "richtext"
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component.card"
+    },
+    "identifier": {
+      "type": "string"
+    }
+  }
+}

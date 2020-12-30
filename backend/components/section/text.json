@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_section_texts",
+  "info": {
+    "name": "Text",
+    "icon": "align-left"
+  },
+  "options": {},
+  "attributes": {
+    "headline": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "align": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ]
+    },
+    "identifier": {
+      "type": "string"
+    }
+  }
+}

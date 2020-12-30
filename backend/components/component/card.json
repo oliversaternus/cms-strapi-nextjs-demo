@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_component_cards",
+  "info": {
+    "name": "card",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "standart",
+        "person"
+      ]
+    },
+    "link": {
+      "type": "string"
+    },
+    "linkText": {
+      "type": "string"
+    }
+  }
+}

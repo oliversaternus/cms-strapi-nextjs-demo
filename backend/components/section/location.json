@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_section_locations",
+  "info": {
+    "name": "Location",
+    "icon": "map-marker-alt"
+  },
+  "options": {},
+  "attributes": {
+    "headline": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "street": {
+      "type": "string"
+    },
+    "house": {
+      "type": "string"
+    },
+    "identifier": {
+      "type": "string"
+    }
+  }
+}

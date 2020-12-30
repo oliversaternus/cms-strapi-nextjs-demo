@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_component_buttons",
+  "info": {
+    "name": "Button",
+    "icon": "circle-notch"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

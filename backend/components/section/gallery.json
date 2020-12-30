@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_section_galleries",
+  "info": {
+    "name": "Gallery",
+    "icon": "photo-video"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "richtext"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+	"identifier": {
+      "type": "string"
+    }
+  }
+}

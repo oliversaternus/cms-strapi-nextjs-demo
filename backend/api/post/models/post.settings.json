@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "name": "Blogpost",
+    "displayName": "Blogartikel",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "title": {
+      "type": "string",
+      "unique": true,
+      "required": true,
+      "default": "Title"
+    },
+    "author": {
+      "model": "author",
+      "via": "posts"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "identifier": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": "string",
+      "default": "tag1,tag2"
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "topic": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

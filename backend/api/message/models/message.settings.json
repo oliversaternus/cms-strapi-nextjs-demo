@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "messages",
+  "info": {
+    "name": "Message",
+    "displayName": "Nachrichten",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "content": {
+      "type": "text"
+    },
+    "email": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "salutation": {
+      "type": "string"
+    },
+    "done": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

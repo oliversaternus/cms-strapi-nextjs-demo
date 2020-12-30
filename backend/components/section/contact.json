@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_section_contacts",
+  "info": {
+    "name": "Contact",
+    "icon": "envelope"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "richtext"
+    },
+    "identifier": {
+      "type": "string"
+    }
+  }
+}

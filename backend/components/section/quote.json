@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_section_quotes",
+  "info": {
+    "name": "Quote",
+    "icon": "quote-left"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "author": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "identifier": {
+      "type": "string"
+    }
+  }
+}
