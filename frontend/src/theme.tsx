@@ -62,6 +62,7 @@ type customColors = {
   textStrong?: string;
   textLight?: string;
   background?: string;
+  textShadow?: string;
 }
 
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -108,7 +109,8 @@ const theme = createMuiTheme({
     sectionStyles: {
       hero: {
         background: 'linear-gradient(150deg,rgba(64, 81, 102,.4) 0%,rgba(64, 81, 102,.4) 100%)',
-        text: '#ffffff'
+        text: '#ffffff',
+        textShadow: 'rgb(64, 81, 102)'
       },
       banner: {
         background: 'linear-gradient(150deg,rgba(64, 81, 102,.9) 0%,rgba(64, 81, 102,.85) 100%)',
