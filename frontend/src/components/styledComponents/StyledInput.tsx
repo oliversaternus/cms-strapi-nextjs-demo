@@ -15,17 +15,17 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         alignItems: 'center',
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: fade(theme.palette.text.primary, 0.3),
+        borderColor: fade(theme.palette.componentStyles.input?.text || theme.palette.text.primary, 0.3),
         padding: 12,
         paddingTop: 6,
         paddingBottom: 6,
         borderRadius: 4,
-        backgroundColor: theme.palette.customBackground.light
+        backgroundColor: theme.palette.componentStyles.input?.background || theme.palette.backgrounds.main
     },
     textfield: {
         flex: 1,
-        fontFamily: 'Poppins',
-        color: theme.palette.text.primary,
+        fontFamily: theme.typography.fontFamily,
+        color: theme.palette.componentStyles.input?.text || theme.palette.text.primary,
         fontSize: 18
     }
 }));

@@ -115,7 +115,7 @@ const compare = (config: VisibleCondition, data: { [key: string]: any }) => {
     return false;
 };
 
-const useQuestionStyles = makeStyles(() =>
+const useQuestionStyles = makeStyles((theme) =>
     createStyles({
         root: {
             width: '100%',
@@ -125,7 +125,8 @@ const useQuestionStyles = makeStyles(() =>
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
-            justifyContent: 'flex-start'
+            justifyContent: 'flex-start',
+            color: theme.palette.componentStyles.dialog?.text || theme.palette.text.primary
         },
         collapse: {
             width: '100%'
@@ -134,8 +135,9 @@ const useQuestionStyles = makeStyles(() =>
             display: 'none'
         },
         title: {
-            fontFamily: 'Poppins, sans-serif',
-            fontSize: 14
+            fontFamily: theme.typography.fontFamily,
+            fontSize: 14,
+            color: theme.palette.componentStyles.dialog?.text || theme.palette.text.primary
         },
         fontSize: {
             fontSize: 14
@@ -187,7 +189,7 @@ const Question: React.FC<QuestionProps> = ({ data, question, onChange, step, ind
                             <Typography className={classes.title}>{title}</Typography>
                             <FormControl>
                                 <RadioGroup row value={stepData[key] || 'undefined'} onChange={handleChange}>
-                                    {choices?.map(value => <FormControlLabel classes={{ label: classes.fontSize }} key={value} labelPlacement='end' label={value} value={value} control={<Radio color='primary' size='small' />} />)}
+                                    {choices?.map(value => <FormControlLabel classes={{ label: classes.fontSize }} key={value} labelPlacement='end' label={value} value={value} control={<Radio color='secondary' size='small' />} />)}
                                 </RadioGroup>
                             </FormControl>
                         </>
@@ -242,8 +244,9 @@ const useSurveyStyles = makeStyles((theme) =>
             alignItems: 'center',
             justifyContent: 'flex-start'
         },
-        stepLabel: {
-            fontFamily: 'Poppins, sans-serif'
+        stepLabelContent: {
+            fontFamily: theme.typography.fontFamily,
+            color: theme.palette.componentStyles.dialog?.text || theme.palette.text.primary
         },
         stepIconRoot: {
             color: theme.palette.secondary.light,
@@ -277,7 +280,7 @@ const useSurveyStyles = makeStyles((theme) =>
             padding: 16
         },
         stepper: {
-
+            backgroundColor: theme.palette.componentStyles.dialog?.background || theme.palette.backgrounds.main
         },
         '@media (max-width: 800px)': {
             stepper: {
@@ -360,7 +363,7 @@ const Survey: React.FC<SurveyProps> = ({ displayComplete, surveyData, rootClass,
                         <Stepper activeStep={activeStep} orientation="vertical" className={classes.stepper}>
                             {surveyData.steps.map((step, stepIndex) => (
                                 <Step key={step.title}>
-                                    <StepLabel className={classes.stepLabel} StepIconProps={{ classes: { root: classes.stepIconRoot } }} color='secondary'>{step.title}</StepLabel>
+                                    <StepLabel StepIconProps={{ classes: { root: classes.stepIconRoot } }} color='secondary'><span className={classes.stepLabelContent}>{step.title}</span></StepLabel>
                                     <StepContent>
                                         {step.questions.map(question =>
                                             <Question

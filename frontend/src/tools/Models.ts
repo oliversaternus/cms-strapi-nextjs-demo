@@ -22,7 +22,6 @@ export type Page = {
 export type GlobalData = {
     id?: number;
     logo?: Image;
-    favicon?: Image;
     navigation?: NavigationArea;
     footer?: NavigationArea;
 };

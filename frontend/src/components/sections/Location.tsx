@@ -22,10 +22,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        color: theme.palette.text.secondary,
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
+        background: theme.palette.sectionStyles.location?.background || theme.palette.backgrounds.main,
+        color: theme.palette.sectionStyles.location?.text || theme.palette.text.primary,
         position: 'relative',
         overflow: 'hidden'
     },
@@ -44,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         fontSize: 32,
         fontWeight: 500,
         lineHeight: 1.2,
-        color: theme.palette.primary.main
+        color: theme.palette.sectionStyles.location?.text || theme.palette.text.primary
     },
     '@media (max-width: 1000px)': {
         root: {

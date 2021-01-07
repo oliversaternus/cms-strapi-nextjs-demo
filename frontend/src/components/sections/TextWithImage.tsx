@@ -24,10 +24,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        color: theme.palette.text.secondary,
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
+        background: theme.palette.sectionStyles.text?.background || theme.palette.backgrounds.main,
+        color: theme.palette.sectionStyles.text?.text || theme.palette.text.primary,
         position: 'relative',
         overflow: 'hidden'
     },
@@ -59,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 32,
             fontWeight: 500,
             lineHeight: 1.2,
-            color: theme.palette.primary.main
+            color: theme.palette.sectionStyles.text?.text || theme.palette.text.primary
         },
         '& h2': {
             paddingTop: 6,
@@ -68,7 +66,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 32,
             fontWeight: 500,
             lineHeight: 1.2,
-            color: theme.palette.primary.main
+            color: theme.palette.sectionStyles.text?.text || theme.palette.text.primary
         },
         '& h3': {
             paddingTop: 6,
@@ -77,7 +75,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 32,
             fontWeight: 500,
             lineHeight: 1.2,
-            color: theme.palette.primary.main
+            color: theme.palette.sectionStyles.text?.text || theme.palette.text.primary
         },
         '& h4': {
             paddingTop: 6,
@@ -86,7 +84,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 32,
             fontWeight: 500,
             lineHeight: 1.2,
-            color: theme.palette.primary.main
+            color: theme.palette.sectionStyles.text?.text || theme.palette.text.primary
         },
         '& h5': {
             paddingTop: 6,
@@ -95,20 +93,20 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 32,
             fontWeight: 500,
             lineHeight: 1.2,
-            color: theme.palette.primary.main
+            color: theme.palette.sectionStyles.text?.text || theme.palette.text.primary
         },
         '& p': {
             margin: 0,
             fontSize: 16,
             fontWeight: 300,
-            color: theme.palette.text.primary
+            color: theme.palette.sectionStyles.text?.text || theme.palette.text.primary
         },
         '& ul': {
             margin: 0,
             paddingBottom: 32,
             fontSize: 16,
             fontWeight: 300,
-            color: theme.palette.text.primary,
+            color: theme.palette.sectionStyles.text?.text || theme.palette.text.primary,
             paddingLeft: 18
         },
         '& ol': {
@@ -116,7 +114,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             paddingBottom: 32,
             fontWeight: 300,
             fontSize: 16,
-            color: theme.palette.text.primary,
+            color: theme.palette.sectionStyles.text?.text || theme.palette.text.primary,
             paddingLeft: 18
         }
     },

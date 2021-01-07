@@ -13,7 +13,7 @@ interface BannerProps {
     className?: string;
 }
 
-const useStyles = makeStyles(() => createStyles({
+const useStyles = makeStyles((theme) => createStyles({
     root: {
         width: '100%',
         minHeight: '60vh',
@@ -58,7 +58,7 @@ const useStyles = makeStyles(() => createStyles({
         zIndex: 0,
         top: 0,
         right: 0,
-        backgroundImage: 'linear-gradient(150deg,rgba(64, 81, 102,.9) 0%,rgba(64, 81, 102,.85) 100%)'
+        background: theme.palette.sectionStyles.banner?.background || theme.palette.backgrounds.main
     },
     content: {
         maxWidth: 800,
@@ -74,7 +74,7 @@ const useStyles = makeStyles(() => createStyles({
             fontSize: 40,
             fontWeight: 600,
             lineHeight: 1.2,
-            color: '#ffffff'
+            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary
         },
         '& h2': {
             textAlign: 'center',
@@ -84,7 +84,7 @@ const useStyles = makeStyles(() => createStyles({
             fontSize: 40,
             fontWeight: 600,
             lineHeight: 1.2,
-            color: '#ffffff'
+            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary
         },
         '& h3': {
             textAlign: 'center',
@@ -94,7 +94,7 @@ const useStyles = makeStyles(() => createStyles({
             fontSize: 32,
             fontWeight: 600,
             lineHeight: 1.2,
-            color: '#ffffff'
+            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary
         },
         '& h4': {
             textAlign: 'center',
@@ -104,7 +104,7 @@ const useStyles = makeStyles(() => createStyles({
             fontSize: 28,
             fontWeight: 600,
             lineHeight: 1.2,
-            color: '#ffffff'
+            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary
         },
         '& h5': {
             textAlign: 'center',
@@ -114,21 +114,21 @@ const useStyles = makeStyles(() => createStyles({
             fontSize: 24,
             fontWeight: 600,
             lineHeight: 1.2,
-            color: '#ffffff'
+            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary
         },
         '& p': {
             textAlign: 'center',
             margin: 0,
             fontSize: 20,
             fontWeight: 300,
-            color: 'rgba(255,255,255,1)'
+            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary
         },
         '& ul': {
             textAlign: 'center',
             margin: 0,
             fontSize: 20,
             fontWeight: 300,
-            color: 'rgba(255,255,255,1)',
+            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary,
             paddingLeft: 18
         },
         '& ol': {
@@ -136,7 +136,7 @@ const useStyles = makeStyles(() => createStyles({
             margin: 0,
             fontSize: 20,
             fontWeight: 300,
-            color: 'rgba(255,255,255,1)',
+            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary,
             paddingLeft: 18
         }
     },
@@ -150,7 +150,7 @@ const useStyles = makeStyles(() => createStyles({
 }));
 
 const Banner: React.FC<BannerProps> = (props) => {
-    const { className, banner } = props;
+    const { className, banner, children } = props;
     const classes = useStyles();
     const parsedContent = useMemo(() => parse(banner.content || ''), [banner]);
 
@@ -161,17 +161,16 @@ const Banner: React.FC<BannerProps> = (props) => {
 
                 </div>
                 {banner.button && <Button className={classes.button} _color='light' link={banner.button?.link}>{banner.button.content}</Button>}
+                {children}
             </div>
             {banner.image &&
-                <>
-                    <Image
-                        className={classes.imageContainer}
-                        src={banner.image.url}
-                        previewUrl={banner.image.previewUrl}
-                    />
-                    <div className={classes.imageOverlay} />
-                </>
+                <Image
+                    className={classes.imageContainer}
+                    src={banner.image.url}
+                    previewUrl={banner.image.previewUrl}
+                />
             }
+            <div className={classes.imageOverlay} />
         </div>
     );
 };

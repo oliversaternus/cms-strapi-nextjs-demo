@@ -20,19 +20,25 @@ interface CardsItemProps {
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
         width: '100%',
-        maxWidth: 1016,
         paddingTop: 96,
-        paddingBottom: 96
+        paddingBottom: 96,
+        background: theme.palette.sectionStyles.cards?.background || theme.palette.backgrounds.main,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     content: {
         width: '100%',
+        maxWidth: 1016,
         display: 'flex',
         alignItems: 'stretch',
         flexWrap: 'wrap',
-        color: theme.palette.text.primary
+        color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
     },
     heading: {
         width: '100%',
+        maxWidth: 1016,
         padding: 24,
         paddingTop: 0,
         display: 'flex',
@@ -40,7 +46,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         justifyContent: 'center',
         alignItems: 'center',
         paddingBottom: 48,
-        color: theme.palette.text.primary,
+        color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary,
         '& h1': {
             paddingTop: 6,
             paddingBottom: 6,
@@ -80,14 +86,14 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             margin: 0,
             fontSize: 16,
             fontWeight: 300,
-            color: theme.palette.text.primary
+            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
         },
         '& ul': {
             margin: 0,
             paddingBottom: 32,
             fontSize: 16,
             fontWeight: 300,
-            color: theme.palette.text.primary,
+            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary,
             paddingLeft: 18
         },
         '& ol': {
@@ -95,7 +101,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             paddingBottom: 32,
             fontSize: 16,
             fontWeight: 300,
-            color: theme.palette.text.primary,
+            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary,
             paddingLeft: 18
         }
     },
@@ -146,7 +152,7 @@ const useCardStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 24,
             fontWeight: 400,
             lineHeight: 1.2,
-            color: theme.palette.text.secondary
+            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
         },
         '& h2': {
             paddingTop: 6,
@@ -156,7 +162,7 @@ const useCardStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 24,
             fontWeight: 400,
             lineHeight: 1.2,
-            color: theme.palette.text.secondary
+            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
         },
         '& h3': {
             paddingTop: 6,
@@ -166,7 +172,7 @@ const useCardStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 24,
             fontWeight: 400,
             lineHeight: 1.2,
-            color: theme.palette.text.secondary
+            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
         },
         '& h4': {
             paddingTop: 6,
@@ -176,7 +182,7 @@ const useCardStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 24,
             fontWeight: 400,
             lineHeight: 1.2,
-            color: theme.palette.text.secondary
+            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
         },
         '& h5': {
             paddingTop: 6,
@@ -186,14 +192,14 @@ const useCardStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 24,
             fontWeight: 400,
             lineHeight: 1.2,
-            color: theme.palette.text.secondary
+            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
         },
         '& p': {
             margin: 0,
             fontSize: 16,
             textAlign: 'center',
             fontWeight: 300,
-            color: theme.palette.text.primary
+            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
         },
         '& ul': {
             margin: 0,
@@ -201,7 +207,7 @@ const useCardStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 16,
             textAlign: 'center',
             fontWeight: 300,
-            color: theme.palette.text.primary,
+            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary,
             paddingLeft: 18
         },
         '& ol': {
@@ -210,7 +216,7 @@ const useCardStyles = makeStyles((theme: Theme) => createStyles({
             textAlign: 'center',
             fontSize: 16,
             fontWeight: 300,
-            color: theme.palette.text.primary,
+            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary,
             paddingLeft: 18
         }
     },

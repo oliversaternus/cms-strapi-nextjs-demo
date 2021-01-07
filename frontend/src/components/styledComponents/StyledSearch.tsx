@@ -13,7 +13,7 @@ interface StyledSearchProps extends InputProps {
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
         display: 'flex',
-        backgroundColor: theme.palette.customBackground.light,
+        backgroundColor: theme.palette.componentStyles.input?.background || theme.palette.backgrounds.main,
         borderRadius: 4,
         overflow: 'hidden'
     },
@@ -28,20 +28,20 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
     textfield: {
         flex: 1,
-        fontFamily: 'Poppins',
-        color: theme.palette.text.primary,
+        fontFamily: theme.typography.fontFamily,
+        color: theme.palette.componentStyles.input?.text || theme.palette.text.primary,
         fontSize: 18
     },
     searchIcon: {
         width: 24,
         height: 24,
-        fill: theme.palette.text.primary,
+        fill: theme.palette.componentStyles.input?.text || theme.palette.text.primary,
         marginRight: 8
     },
     arrowIcon: {
         width: 24,
         height: 24,
-        fill: '#ffffff'
+        fill: theme.palette.secondary.contrastText
     },
     searchButton: {
         borderRadius: 0

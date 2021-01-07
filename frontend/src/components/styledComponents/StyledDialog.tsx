@@ -18,7 +18,7 @@ const TransitionFade: any = React.forwardRef(function Transition(props: any, ref
 
 const useStyles = makeStyles((theme: Theme) => ({
     content: {
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: theme.palette.componentStyles.dialog?.background || theme.palette.backgrounds.main,
         padding: 32,
         position: 'relative',
         display: 'flex',
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: theme.palette.text.primary,
+        color: theme.palette.componentStyles.dialog?.text || theme.palette.text.primary,
         minWidth: 180
     },
     closeButton: {
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     closeIcon: {
         width: 24,
         height: 24,
-        fill: theme.palette.text.primary
+        fill: theme.palette.componentStyles.dialog?.text || theme.palette.text.primary
     },
     iconLight: {
         fill: '#ffffff'

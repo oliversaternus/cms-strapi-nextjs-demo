@@ -22,10 +22,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        color: theme.palette.text.secondary,
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
+        background: theme.palette.sectionStyles.quote?.background || theme.palette.backgrounds.main,
+        color: theme.palette.sectionStyles.quote?.text || theme.palette.text.primary,
         position: 'relative',
         overflow: 'hidden'
     },
@@ -55,7 +53,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 20,
             fontWeight: 400,
             lineHeight: 1.2,
-            color: theme.palette.text.hint
+            color: theme.palette.sectionStyles.quote?.textLight || theme.palette.text.hint,
         },
         '& h2': {
             paddingTop: 6,
@@ -64,7 +62,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 20,
             fontWeight: 400,
             lineHeight: 1.2,
-            color: theme.palette.text.hint
+            color: theme.palette.sectionStyles.quote?.textLight || theme.palette.text.hint
         },
         '& h3': {
             paddingTop: 6,
@@ -73,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 20,
             fontWeight: 400,
             lineHeight: 1.2,
-            color: theme.palette.text.hint
+            color: theme.palette.sectionStyles.quote?.textLight || theme.palette.text.hint
         },
         '& h4': {
             paddingTop: 6,
@@ -82,7 +80,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 20,
             fontWeight: 400,
             lineHeight: 1.2,
-            color: theme.palette.text.hint
+            color: theme.palette.sectionStyles.quote?.textLight || theme.palette.text.hint
         },
         '& h5': {
             paddingTop: 6,
@@ -91,33 +89,33 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 20,
             fontWeight: 400,
             lineHeight: 1.2,
-            color: theme.palette.text.hint
+            color: theme.palette.sectionStyles.quote?.textLight || theme.palette.text.hint
         },
         '& p': {
             margin: 0,
             fontSize: 20,
             fontWeight: 300,
-            color: theme.palette.text.primary
+            color: theme.palette.sectionStyles.quote?.text || theme.palette.text.primary
         },
         '& ul': {
             margin: 0,
             fontSize: 20,
             fontWeight: 300,
-            color: theme.palette.text.primary,
+            color: theme.palette.sectionStyles.quote?.text || theme.palette.text.primary,
             paddingLeft: 18
         },
         '& ol': {
             margin: 0,
             fontSize: 20,
             fontWeight: 300,
-            color: theme.palette.text.primary,
+            color: theme.palette.sectionStyles.quote?.text || theme.palette.text.primary,
             paddingLeft: 18
         }
     },
     quoteIcon: {
         width: 48,
         height: 48,
-        fill: theme.palette.text.disabled,
+        fill: theme.palette.sectionStyles.quote?.textLight || theme.palette.text.hint,
         opacity: 0.4
     },
     authorContainer: {
@@ -131,12 +129,12 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     author: {
         fontSize: 20,
         fontWeight: 500,
-        color: theme.palette.text.secondary
+        color: theme.palette.sectionStyles.quote?.text || theme.palette.text.primary
     },
     company: {
         fontSize: 14,
         fontWeight: 300,
-        color: theme.palette.text.primary
+        color: theme.palette.sectionStyles.quote?.text || theme.palette.text.primary
     },
     avatar: {
         width: 64,

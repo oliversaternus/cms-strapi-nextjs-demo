@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             width: '100%',
-            backgroundColor: '#ffffff',
+            backgroundColor: theme.palette.componentStyles.footer?.background || theme.palette.backgrounds.main,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -41,19 +41,8 @@ const useStyles = makeStyles((theme: Theme) =>
             height: 32,
             marginRight: 8
         },
-        brandName: {
-            color: theme.palette.primary.main,
-            fontSize: 16,
-            fontWeight: 300,
-            lineHeight: 1
-        },
-        brandName2: {
-            color: theme.palette.secondary.main,
-            fontWeight: 400,
-            fontSize: 18
-        },
         title: {
-            color: theme.palette.text.secondary,
+            color: theme.palette.componentStyles.footer?.textStrong || theme.palette.text.secondary,
             fontSize: 18,
             fontWeight: 500,
             marginBottom: 8,
@@ -63,12 +52,12 @@ const useStyles = makeStyles((theme: Theme) =>
         link: {
             fontSize: 14,
             fontWeight: 300,
-            color: theme.palette.text.primary,
+            color: theme.palette.componentStyles.footer?.text || theme.palette.text.primary,
             userSelect: 'none',
             WebkitTapHighlightColor: 'transparent',
             transition: 'color 0.16s linear',
             '&:hover': {
-                color: theme.palette.text.hint,
+                color: theme.palette.componentStyles.footer?.textLight || theme.palette.text.hint,
                 textDecoration: 'none'
             }
         },
@@ -97,7 +86,7 @@ const Footer: React.FC<FooterProps> = ({ columns, logoSrc }) => {
                                 <div className={classes.title}>{column.title}</div>
                                 {column.links?.map(link =>
                                     <Link href={link.path + ''} key={link.id}>
-                                        <a className={classes.link}>{link.link}</a>
+                                        <a target="_self" className={classes.link}>{link.link}</a>
                                     </Link>
                                 )}
                             </div>

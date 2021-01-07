@@ -33,9 +33,9 @@ const Accordion = withStyles({
     expanded: {},
 })(MuiAccordion);
 
-const AccordionSummary = withStyles({
+const AccordionSummary = withStyles((theme) => ({
     root: {
-        color: '#ffffff',
+        color: theme.palette.componentStyles.navigation?.dialog?.text || theme.palette.text.primary,
         marginBottom: -1,
         minHeight: 56,
         width: '100%',
@@ -50,7 +50,7 @@ const AccordionSummary = withStyles({
         },
     },
     expanded: {},
-})(MuiAccordionSummary);
+}))(MuiAccordionSummary);
 
 const AccordionDetails = withStyles((theme) => ({
     root: {
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             width: '100%',
-            backgroundColor: '#ffffff',
+            background: theme.palette.componentStyles.navigation?.main.background || theme.palette.backgrounds.main,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme: Theme) =>
             width: '100%'
         },
         expandIcon: {
-            fill: 'rgba(255,255,255,0.4)'
+            fill: theme.palette.componentStyles.navigation?.dialog.text || theme.palette.text.primary
         },
         details: {
             paddingLeft: 16,
@@ -123,35 +123,8 @@ const useStyles = makeStyles((theme: Theme) =>
             paddingLeft: 0
         },
         logoImage: {
-            height: 36,
+            height: 48,
             marginRight: 8
-        },
-        brandName: {
-            color: theme.palette.primary.main,
-            fontSize: 18,
-            fontWeight: 300,
-            lineHeight: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            flexDirection: 'row',
-            flexWrap: 'wrap'
-        },
-        brandName2: {
-            color: theme.palette.secondary.main,
-            fontWeight: 400,
-            fontSize: 22,
-            marginRight: 6
-        },
-        brandDivider: {
-            display: 'flex',
-            marginRight: 6
-        },
-        brandBreak: {
-            display: 'none'
-        },
-        lightBrandName: {
-            color: '#ffffff'
         },
         linkContainer: {
             position: 'absolute',
@@ -174,13 +147,13 @@ const useStyles = makeStyles((theme: Theme) =>
             fontSize: 16,
             margin: 12,
             fontWeight: 300,
-            color: theme.palette.text.primary,
+            color: theme.palette.componentStyles.navigation?.main.text || theme.palette.text.primary,
             transition: 'color 0.16s linear',
             userSelect: 'none',
             WebkitTapHighlightColor: 'transparent',
             '&:hover': {
                 textDecoration: 'none',
-                color: theme.palette.primary.light
+                color: theme.palette.componentStyles.navigation?.main.textLight || theme.palette.primary.light
             }
         },
         homeLink: {
@@ -194,11 +167,11 @@ const useStyles = makeStyles((theme: Theme) =>
             }
         },
         transparentLink: {
-            color: '#ffffff',
+            color: theme.palette.componentStyles.navigation?.transparent?.text || theme.palette.text.primary,
             opacity: 0.7,
             transition: 'opacity 0.16s linear',
             '&:hover': {
-                color: '#ffffff',
+                color: theme.palette.componentStyles.navigation?.transparent?.text || theme.palette.text.primary,
                 opacity: 1
             }
         },
@@ -218,13 +191,13 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'none'
         },
         menuIcon: {
-            fill: theme.palette.text.primary
+            fill: theme.palette.componentStyles.navigation?.main.text || theme.palette.text.primary,
         },
         lightMenuIcon: {
-            fill: '#ffffff'
+            fill: theme.palette.componentStyles.navigation?.transparent?.text || theme.palette.text.primary,
         },
         navMenu: {
-            background: 'linear-gradient(150deg,rgba(64, 81, 102,.6) 0%,rgba(64, 81, 102,1) 100%), linear-gradient(150deg,#ffffff 0%,#ffffff 100%)'
+            background: theme.palette.componentStyles.navigation?.dialog.background || theme.palette.backgrounds.main,
         },
         menuLink: {
             margin: 0
@@ -304,7 +277,7 @@ const Navigation: React.FC<NavigationProps> = ({ transparent, links, logoSrc }) 
                     </IconButton>
                     <div className={classes.logo}>
                         <Link href="/">
-                            <a className={classes.homeLink}>
+                            <a target="_self" className={classes.homeLink}>
                                 <img src={logoSrc} className={classes.logoImage} />
                             </a>
                         </Link>
@@ -336,7 +309,7 @@ const Navigation: React.FC<NavigationProps> = ({ transparent, links, logoSrc }) 
                                                                 onClick={() => setSelectedLinkId(undefined)}
                                                             >
                                                                 <Link href={item.path + ''} >
-                                                                    <a className={clsx(classes.link, classes.menuLink)}>{item.link}</a>
+                                                                    <a target="_self" className={clsx(classes.link, classes.menuLink)}>{item.link}</a>
                                                                 </Link>
                                                             </MenuItem>
                                                         )}
@@ -349,7 +322,7 @@ const Navigation: React.FC<NavigationProps> = ({ transparent, links, logoSrc }) 
                             </React.Fragment>
                             :
                             <Link href={link.links?.[0]?.path + ''} key={link.id}>
-                                <a className={clsx(classes.link, transparent && !isScrolled && classes.transparentLink)}>{link.title}</a>
+                                <a target="_self" className={clsx(classes.link, transparent && !isScrolled && classes.transparentLink)}>{link.title}</a>
                             </Link>
                         )}
                     </div>

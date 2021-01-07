@@ -1,9 +1,7 @@
 import { Post, PostQuery, Response, Page, Message, GlobalData, Integrations } from './Models';
 import { stringify } from 'qs';
-import fs from 'fs';
-import path from 'path';
 
-export const apiBaseUrl = JSON.parse(fs.readFileSync(path.join('..', '..', 'config.json'), 'utf8'))?.apiBaseUrl;
+export const apiBaseUrl = 'http://localhost:1337';
 
 const invokeApi = async <T>(path: string, query: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', body?: any, noAuth?: boolean): Promise<Response<T>> => {
     try {

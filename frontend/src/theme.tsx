@@ -1,10 +1,67 @@
 declare module "@material-ui/core/styles/createPalette" {
   interface Palette {
-    customBackground: Palette['primary'];
+    backgrounds: {
+      main: string;
+      input: string;
+      dialog: string;
+    };
+    sectionStyles: {
+      hero?: customColors;
+      banner?: customColors;
+      contact?: customColors;
+      gallery?: customColors;
+      cards?: customColors;
+      location?: customColors;
+      quote?: customColors;
+      text?: customColors;
+      textWithImage?: customColors;
+    };
+    componentStyles: {
+      navigation?: {
+        main: customColors;
+        dialog: customColors;
+        transparent?: customColors;
+      };
+      footer?: customColors;
+      input?: customColors;
+      dialog?: customColors;
+    }
   }
   interface PaletteOptions {
-    customBackground: PaletteOptions['primary'];
+    backgrounds: {
+      main: string;
+      input: string;
+      dialog: string;
+    };
+    sectionStyles: {
+      hero?: customColors;
+      banner?: customColors;
+      contact?: customColors;
+      gallery?: customColors;
+      cards?: customColors;
+      location?: customColors;
+      quote?: customColors;
+      text?: customColors;
+      textWithImage?: customColors;
+    };
+    componentStyles: {
+      navigation?: {
+        main: customColors;
+        dialog: customColors;
+        transparent?: customColors;
+      };
+      footer?: customColors;
+      input?: customColors;
+      dialog?: customColors;
+    }
   }
+}
+
+type customColors = {
+  text?: string;
+  textStrong?: string;
+  textLight?: string;
+  background?: string;
 }
 
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -26,14 +83,52 @@ const theme = createMuiTheme({
     text: {
       primary: '#405166',
       secondary: '#253242',
-      disabled: '#79889c',
       hint: '#79889c'
     },
-    customBackground: {
-      light: '#ffffff',
-      main: '#eaf0f6',
-      dark: '#33475b'
+    backgrounds: {
+      main: '#ffffff',
+      input: '#ffffff',
+      dialog: '#202020'
     },
+    componentStyles: {
+      navigation: {
+        main: {
+        },
+        dialog: {
+          background: 'linear-gradient(150deg,rgba(64, 81, 102,.6) 0%,rgba(64, 81, 102,1) 100%), linear-gradient(150deg,#ffffff 0%,#ffffff 100%)',
+          text: '#ffffff'
+        }
+      },
+      footer: {
+      },
+      dialog: {
+      },
+      input: {}
+    },
+    sectionStyles: {
+      hero: {
+        background: 'linear-gradient(150deg,rgba(64, 81, 102,.4) 0%,rgba(64, 81, 102,.4) 100%)',
+        text: '#ffffff'
+      },
+      banner: {
+        background: 'linear-gradient(150deg,rgba(64, 81, 102,.9) 0%,rgba(64, 81, 102,.85) 100%)',
+        text: '#ffffff'
+      },
+      contact: {
+      },
+      gallery: {
+      },
+      cards: {
+      },
+      location: {
+      },
+      quote: {
+      },
+      text: {
+      },
+      textWithImage: {
+      },
+    }
   },
 });
 

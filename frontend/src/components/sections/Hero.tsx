@@ -1,6 +1,6 @@
 import * as React from "react";
 import clsx from "clsx";
-import { createStyles, makeStyles } from "@material-ui/core/styles";
+import { createStyles, makeStyles, fade } from "@material-ui/core/styles";
 import { Theme } from "@material-ui/core";
 import { HeroSection } from '../../tools/Models';
 import { parse } from 'marked';
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        color: theme.palette.text.secondary,
+        color: theme.palette.sectionStyles.hero?.text || theme.palette.text.secondary,
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        textShadow: '0px 0px 16px rgba(64, 81, 102,.56)',
+        // textShadow: '0px 0px 16px ' + fade(theme.palette.sectionStyles.hero?.background || theme.palette.backgrounds.main, 0.56),
         '& h1': {
             paddingTop: 6,
             paddingBottom: 6,
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             fontSize: 56,
             fontWeight: 600,
             lineHeight: 1.1,
-            color: '#ffffff'
+            color: theme.palette.sectionStyles.hero?.text || theme.palette.text.secondary
         },
         '& h2': {
             paddingTop: 6,
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             margin: 0,
             fontSize: 48,
             fontWeight: 300,
-            color: '#ffffff'
+            color: theme.palette.sectionStyles.hero?.text || theme.palette.text.secondary
         },
         '& h3': {
             paddingTop: 6,
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             margin: 0,
             fontSize: 40,
             fontWeight: 300,
-            color: '#ffffff'
+            color: theme.palette.sectionStyles.hero?.text || theme.palette.text.secondary
         },
         '& h4': {
             paddingTop: 6,
@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             margin: 0,
             fontSize: 32,
             fontWeight: 300,
-            color: '#ffffff'
+            color: theme.palette.sectionStyles.hero?.text || theme.palette.text.secondary
         },
         '& h5': {
             paddingTop: 6,
@@ -87,21 +87,21 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             margin: 0,
             fontSize: 24,
             fontWeight: 300,
-            color: '#ffffff'
+            color: theme.palette.sectionStyles.hero?.text || theme.palette.text.secondary
         },
         '& p': {
             margin: 0,
             marginBottom: 12,
             marginTop: 12,
             fontSize: 16,
-            color: '#ffffff'
+            color: theme.palette.sectionStyles.hero?.text || theme.palette.text.secondary
         },
         '& ul': {
             margin: 0,
             marginBottom: 12,
             marginTop: 12,
             fontSize: 16,
-            color: '#ffffff',
+            color: theme.palette.sectionStyles.hero?.text || theme.palette.text.secondary,
             paddingLeft: 18
         },
         '& ol': {
@@ -109,7 +109,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             marginBottom: 12,
             marginTop: 12,
             fontSize: 16,
-            color: '#ffffff',
+            color: theme.palette.sectionStyles.hero?.text || theme.palette.text.secondary,
             paddingLeft: 18
         }
     },
@@ -131,7 +131,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         zIndex: 0,
         top: 0,
         right: 0,
-        backgroundImage: 'linear-gradient(150deg,rgba(64, 81, 102,.4) 0%,rgba(64, 81, 102,.4) 100%)'
+        background: theme.palette.sectionStyles.hero?.background
     },
     '@media (max-width: 1000px)': {
         root: {
@@ -143,7 +143,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 const Hero: React.FC<HeroProps> = (props) => {
-    const { className, style, hero } = props;
+    const { className, style, hero, children } = props;
     const classes = useStyles();
     const parsedContent = useMemo(() => parse(hero.content || ''), [hero]);
     return (
@@ -157,6 +157,7 @@ const Hero: React.FC<HeroProps> = (props) => {
 
                 </div>
                 {hero.button && <Button className={classes.button} _color='light' link={hero.button.link} target='_self' >{hero.button.content}</Button>}
+                {children}
             </div >
             {hero.image &&
                 <>

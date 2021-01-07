@@ -29,10 +29,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        color: theme.palette.text.primary,
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
+        color: theme.palette.sectionStyles.contact?.text || theme.palette.text.primary,
+        background: theme.palette.sectionStyles.contact?.background || theme.palette.backgrounds.main,
         position: 'relative',
         overflow: 'hidden'
     },
@@ -52,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         flexDirection: 'row-reverse'
     },
     heading: {
-        color: theme.palette.text.primary,
+        color: theme.palette.sectionStyles.contact?.text || theme.palette.text.primary,
         '& h1': {
             paddingTop: 6,
             paddingBottom: 6,
@@ -92,14 +90,14 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             margin: 0,
             fontSize: 16,
             fontWeight: 300,
-            color: theme.palette.text.primary
+            color: theme.palette.sectionStyles.contact?.text || theme.palette.text.primary
         },
         '& ul': {
             margin: 0,
             paddingBottom: 32,
             fontSize: 16,
             fontWeight: 300,
-            color: theme.palette.text.primary,
+            color: theme.palette.sectionStyles.contact?.text || theme.palette.text.primary,
             paddingLeft: 18
         },
         '& ol': {
@@ -107,7 +105,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             paddingBottom: 32,
             fontSize: 16,
             fontWeight: 300,
-            color: theme.palette.text.primary,
+            color: theme.palette.sectionStyles.contact?.text || theme.palette.text.primary,
             paddingLeft: 18
         }
     },
@@ -128,7 +126,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         fontSize: 32,
         fontWeight: 600,
         lineHeight: 1.2,
-        color: theme.palette.text.secondary
+        color: theme.palette.sectionStyles.contact?.text || theme.palette.text.primary
     },
     '@media (max-width: 1000px)': {
         textContent: {

@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         flexDirection: 'column',
         position: 'relative',
         overflow: 'hidden',
-        color: theme.palette.text.primary
+        background: theme.palette.sectionStyles.gallery?.background || theme.palette.backgrounds.main,
+        color: theme.palette.sectionStyles.gallery?.text || theme.palette.text.primary
     },
     container: {
         width: '100%',
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         flexGrow: 1,
     },
     item: {
-        padding: 6,
+        padding: 4,
         height: 250
     },
     imageContainer: {
@@ -61,7 +62,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         width: '0%'
     },
     heading: {
-        color: theme.palette.text.primary,
+        color: theme.palette.sectionStyles.gallery?.text || theme.palette.text.primary,
         '& h1': {
             paddingTop: 6,
             paddingBottom: 6,
@@ -101,14 +102,14 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             margin: 0,
             fontSize: 16,
             fontWeight: 300,
-            color: theme.palette.text.primary
+            color: theme.palette.sectionStyles.gallery?.text || theme.palette.text.primary
         },
         '& ul': {
             margin: 0,
             paddingBottom: 32,
             fontSize: 16,
             fontWeight: 300,
-            color: theme.palette.text.primary,
+            color: theme.palette.sectionStyles.gallery?.text || theme.palette.text.primary,
             paddingLeft: 18
         },
         '& ol': {
@@ -116,7 +117,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
             paddingBottom: 32,
             fontSize: 16,
             fontWeight: 300,
-            color: theme.palette.text.primary,
+            color: theme.palette.sectionStyles.gallery?.text || theme.palette.text.primary,
             paddingLeft: 18
         }
     },

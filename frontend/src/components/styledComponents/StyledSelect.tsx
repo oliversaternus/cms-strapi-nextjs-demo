@@ -13,23 +13,23 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     textfield: {
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: fade(theme.palette.text.primary, 0.3),
+        borderColor: fade(theme.palette.componentStyles.input?.text || theme.palette.text.primary, 0.3),
         padding: 12,
         paddingTop: 6,
         paddingBottom: 6,
         borderRadius: 4,
-        backgroundColor: theme.palette.customBackground.light
+        backgroundColor: theme.palette.componentStyles.input?.background || theme.palette.backgrounds.main
     },
     input: {
-        fontFamily: 'Poppins',
+        fontFamily: theme.typography.fontFamily,
         color: theme.palette.text.primary,
-        backgroundColor: theme.palette.customBackground.light,
+        backgroundColor: theme.palette.componentStyles.input?.background || theme.palette.backgrounds.main,
         fontSize: 18,
         '&:hover': {
-            backgroundColor: theme.palette.customBackground.light
+            backgroundColor: theme.palette.componentStyles.input?.background || theme.palette.backgrounds.main
         },
         '&.MuiFilledInput-root.Mui-focused': {
-            backgroundColor: theme.palette.customBackground.light
+            backgroundColor: theme.palette.componentStyles.input?.background || theme.palette.backgrounds.main
         }
     },
     select: {
@@ -37,23 +37,23 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         paddingBottom: 7,
         paddingLeft: 0,
         paddingRight: 0,
-        fontFamily: 'Poppins',
-        color: theme.palette.text.primary,
+        fontFamily: theme.typography.fontFamily,
+        color: theme.palette.componentStyles.input?.text || theme.palette.text.primary,
         fontSize: 18,
-        backgroundColor: theme.palette.customBackground.light,
+        backgroundColor: theme.palette.componentStyles.input?.background || theme.palette.backgrounds.main,
         '&:focus': {
-            backgroundColor: theme.palette.customBackground.light
+            backgroundColor: theme.palette.componentStyles.input?.background || theme.palette.backgrounds.main
         },
     },
     label: {
-        fontFamily: 'Poppins',
-        color: theme.palette.text.primary,
+        fontFamily: theme.typography.fontFamily,
+        color: theme.palette.componentStyles.input?.text || theme.palette.text.primary,
         fontSize: 14,
         paddingTop: 0
     },
     menuItem: {
-        color: theme.palette.text.primary,
-        fontFamily: 'Poppins',
+        color: theme.palette.componentStyles.input?.text || theme.palette.text.primary,
+        fontFamily: theme.typography.fontFamily,
         fontSize: 18
     }
 }));
