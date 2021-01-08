@@ -22,16 +22,6 @@
       "plugin": "upload",
       "required": false
     },
-    "navigation": {
-      "type": "component",
-      "repeatable": true,
-      "component": "navigation.nav-group"
-    },
-    "footer": {
-      "type": "component",
-      "repeatable": true,
-      "component": "navigation.nav-group"
-    },
     "favicon": {
       "model": "file",
       "via": "related",
@@ -43,9 +33,6 @@
       "plugin": "upload",
       "required": false
     },
-    "copyright": {
-      "type": "richtext"
-    },
     "previewImage": {
       "model": "file",
       "via": "related",
@@ -56,6 +43,19 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "navigation": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.nav-group"
+    },
+    "footer": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.nav-group"
+    },
+    "copyright": {
+      "type": "richtext"
     }
   }
 }
