@@ -42,6 +42,20 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "copyright": {
+      "type": "richtext"
+    },
+    "previewImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }

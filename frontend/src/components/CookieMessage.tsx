@@ -1,8 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useMemo } from 'react';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Dialog from './styledComponents/StyledDialog';
 import { Button } from '@material-ui/core';
 import { CookieContext } from '../contexts/CookieContext';
+import { parse } from 'marked';
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -26,8 +27,44 @@ const useStyles = makeStyles(() =>
         message: {
             padding: 16,
             paddingBottom: 32,
-            paddingLeft: 24,
-            maxWidth: 420
+            maxWidth: 420,
+            '& h1': {
+                fontSize: 20,
+                fontWeight: 600
+            },
+            '& h2': {
+                fontSize: 20,
+                fontWeight: 600
+            },
+            '& h3': {
+                fontSize: 18,
+                fontWeight: 600
+            },
+            '& h4': {
+                fontSize: 18,
+                fontWeight: 600
+            },
+            '& h5': {
+                fontSize: 14,
+                fontWeight: 400
+            },
+            '& p': {
+                margin: 0,
+                fontSize: 14,
+                fontWeight: 400
+            },
+            '& ul': {
+                margin: 0,
+                paddingLeft: 18,
+                fontSize: 14,
+                fontWeight: 400
+            },
+            '& ol': {
+                margin: 0,
+                paddingLeft: 18,
+                fontSize: 14,
+                fontWeight: 400
+            },
         },
         buttonsContainer: {
             width: '100%',
@@ -52,10 +89,11 @@ const useStyles = makeStyles(() =>
     }),
 );
 
-const CookieDialog: React.FC<{}> = () => {
+const CookieDialog: React.FC<{ message?: string, enabled?: boolean }> = ({ message, enabled }) => {
     const classes = useStyles();
     const { acceptCookies, declineCookies } = useContext(CookieContext);
     const [open, setOpen] = useState(true);
+    const parsedMessage = useMemo(() => parse(message || ''), [message]);
 
     const decline = () => {
         declineCookies();
@@ -76,17 +114,13 @@ const CookieDialog: React.FC<{}> = () => {
         >
             <div className={classes.root}>
                 <div className={classes.container}>
-                    <div className={classes.message}>
-                        Wir nutzen personalisierte Cookies, um Zugriffe auf diese Website
-                        zu analysieren und Dienste von Drittanbietern einzubinden.
-                        <br/><br/>
-                        Wenn Sie Cookies deaktivieren, werden Sie bestimmte Funktionen der Website,
-                        die Cookies erfordern, nicht nutzen können.
+                    <div className={classes.message} dangerouslySetInnerHTML={{ __html: parsedMessage }}>
+
                     </div>
                 </div>
                 <div className={classes.buttonsContainer}>
-                    <Button variant="contained" color="secondary" onClick={decline}>Deaktivieren</Button>
-                    <Button className={classes.button} variant="contained" color="primary" onClick={accept}>Erlauben</Button>
+                    <Button variant="contained" color="secondary" onClick={decline}>Decline</Button>
+                    <Button className={classes.button} variant="contained" color="primary" onClick={accept}>Accept</Button>
                 </div>
             </div>
         </Dialog>

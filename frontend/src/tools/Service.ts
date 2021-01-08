@@ -1,4 +1,4 @@
-import { Post, PostQuery, Response, Page, Message, GlobalData, Integrations } from './Models';
+import { Post, PostQuery, Response, Page, Message, GlobalData, Integrations, CookieConfig } from './Models';
 import { stringify } from 'qs';
 
 export const apiBaseUrl = 'http://localhost:1337';
@@ -50,6 +50,10 @@ export const getGlobalData = async (): Promise<Response<GlobalData>> => {
 
 export const getIntegrations = async (): Promise<Response<Integrations>> => {
     return await invokeApi('/integrations', '', 'GET', undefined, true);
+};
+
+export const getCookieConfig = async (): Promise<Response<CookieConfig>> => {
+    return await invokeApi('/cookies', '', 'GET', undefined, true);
 };
 
 export const createMessage = async (message: Message): Promise<Response<Page>> => {

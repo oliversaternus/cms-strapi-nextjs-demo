@@ -23,8 +23,16 @@ export type GlobalData = {
     id?: number;
     logo?: Image;
     favicon?: Image;
+    previewImage?: Image;
+    copyright?: string;
     navigation?: NavigationArea;
     footer?: NavigationArea;
+};
+
+export type CookieConfig = {
+    id?: number;
+    enabled?: boolean;
+    message?: string;
 };
 
 export type NavigationArea = Array<{

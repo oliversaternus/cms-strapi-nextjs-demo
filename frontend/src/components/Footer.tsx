@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Link from 'next/link';
 import { NavigationArea } from '../tools/Models';
+import { parse } from 'marked';
 
 type FooterProps = {
     columns?: NavigationArea;
     logoSrc?: string;
+    copyright?: string;
 };
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -16,6 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            flexDirection: 'column'
         },
         container: {
             width: '100%',
@@ -30,6 +33,15 @@ const useStyles = makeStyles((theme: Theme) =>
             fontSize: 14,
             minHeight: 84,
         },
+        subFooter: {
+            padding: 16,
+            paddingBottom: 24,
+            maxWidth: 1080,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexDirection: 'column'
+        },
         column: {
             display: 'flex',
             flexDirection: 'column',
@@ -38,20 +50,68 @@ const useStyles = makeStyles((theme: Theme) =>
             padding: 32
         },
         logoImage: {
-            height: 32,
+            height: 44,
             marginRight: 8
         },
         title: {
             color: theme.palette.componentStyles.footer?.textStrong || theme.palette.text.secondary,
             fontSize: 18,
-            fontWeight: 500,
+            fontWeight: 600,
             marginBottom: 8,
             display: 'flex',
             alignItems: 'center'
         },
+        copyright: {
+            '& h1': {
+                fontSize: 14,
+                fontWeight: 300,
+                padding: 12
+            },
+            '& h2': {
+                fontSize: 14,
+                fontWeight: 300,
+                padding: 12
+            },
+            '& h3': {
+                fontSize: 14,
+                fontWeight: 300,
+                padding: 12
+            },
+            '& h4': {
+                fontSize: 14,
+                fontWeight: 300,
+                padding: 12
+            },
+            '& h5': {
+                fontSize: 14,
+                fontWeight: 300,
+                padding: 12
+            },
+            '& p': {
+                fontSize: 14,
+                fontWeight: 300,
+                padding: 12
+            },
+            '& ul': {
+                margin: 0,
+                paddingLeft: 18,
+                fontSize: 14,
+                fontWeight: 300,
+                padding: 12
+            },
+            '& ol': {
+                margin: 0,
+                paddingLeft: 18,
+                fontSize: 14,
+                fontWeight: 300,
+                padding: 12
+            },
+        },
         link: {
             fontSize: 14,
             fontWeight: 300,
+            marginTop: 6,
+            marginBottom: 6,
             color: theme.palette.componentStyles.footer?.text || theme.palette.text.primary,
             userSelect: 'none',
             WebkitTapHighlightColor: 'transparent',
@@ -69,17 +129,13 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-const Footer: React.FC<FooterProps> = ({ columns, logoSrc }) => {
+const Footer: React.FC<FooterProps> = ({ columns, logoSrc, copyright }) => {
     const classes = useStyles();
+    const parsedCopyright = useMemo(() => parse(copyright || ''), [copyright]);
     return (
         <>
             <div className={classes.root}>
                 <div className={classes.container}>
-                    <div className={classes.column}>
-                        <div className={classes.title}>
-                            <img src={logoSrc} className={classes.logoImage} />
-                        </div>
-                    </div>
                     {columns?.map(column =>
                         <React.Fragment key={column.id}>
                             <div className={classes.column}>
@@ -92,6 +148,10 @@ const Footer: React.FC<FooterProps> = ({ columns, logoSrc }) => {
                             </div>
                         </ React.Fragment>
                     )}
+                </div>
+                <div className={classes.subFooter}>
+                    <img src={logoSrc} className={classes.logoImage} />
+                    <div className={classes.copyright} dangerouslySetInnerHTML={{ __html: parsedCopyright }}></div>
                 </div>
             </div>
         </>
