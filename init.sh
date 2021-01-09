@@ -16,5 +16,5 @@ cp backend/sampledata/data.db backend/data/data.db;
 echo "8";
 cp -a backend/sampledata/uploads/. backend/public/uploads;
 echo "9";
-echo "DATABASE_FILENAME=data/data.db\nADMIN_JWT_SECRET=$(openssl rand -hex 16)" >backend/.env;
+echo -en "DATABASE_FILENAME=data/data.db\nADMIN_JWT_SECRET=$(openssl rand -hex 16)" >backend/.env;
 echo "10";
