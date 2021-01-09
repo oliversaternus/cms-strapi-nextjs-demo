@@ -3,7 +3,7 @@ import Head from 'next/head';
 import App, { AppContext, AppProps } from 'next/app';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import theme from '../src/theme';
+import { themeDefault as theme } from '../src/theme';
 import Router from 'next/router';
 import { NotificationContextProvider } from '../src/contexts/NotificationContext';
 import { CircularProgress } from '@material-ui/core';
@@ -102,7 +102,7 @@ function CustomApp(props: ExtendedAppProps) {
           <NotificationContextProvider>
             {integrations.Analytics?.enabled && <Analytics trackingID={integrations.Analytics.GATrackingID} />}
             {integrations.Chat?.enabled && <Chat tawkToID={integrations.Chat.TawkToID} />}
-            {isLoading && <div className="loading-overlay"><CircularProgress color='secondary' /></div>}
+            {isLoading && <div className="loading-overlay" style={{ background: theme.palette.backgrounds.main }}><CircularProgress color='secondary' /></div>}
             {documentCookies.acceptedCookies !== 'accepted' && documentCookies.acceptedCookies !== 'declined' && cookieConfig.enabled && <CookieMessage {...cookieConfig} />}
             <Navigation
               logoSrc={logo?.url}

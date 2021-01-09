@@ -21,14 +21,15 @@ type PageIntialProps = {
 
 const defaultPageSize = 10;
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme) =>
     createStyles({
         root: {
             width: '100%',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'flex-start',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            background: theme.palette.backgrounds.main
         },
         search: {
             marginTop: 16

@@ -128,7 +128,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     image: {
         height: 320,
         width: '100%',
-        boxShadow: '12px 12px 12px rgba(64, 81, 102,.4)'
+        boxShadow: '12px 12px 12px rgba(0,0,0,.4)',
+        borderRadius: 4,
+        overflow: 'hidden'
     },
     button: {
         marginTop: 0

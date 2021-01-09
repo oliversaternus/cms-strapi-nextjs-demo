@@ -3,7 +3,6 @@ declare module "@material-ui/core/styles/createPalette" {
     backgrounds: {
       main: string;
       input: string;
-      dialog: string;
     };
     sectionStyles: {
       hero?: customColors;
@@ -31,7 +30,6 @@ declare module "@material-ui/core/styles/createPalette" {
     backgrounds: {
       main: string;
       input: string;
-      dialog: string;
     };
     sectionStyles: {
       hero?: customColors;
@@ -68,7 +66,7 @@ type customColors = {
 import { createMuiTheme } from '@material-ui/core/styles';
 
 // Create a theme instance.
-const theme = createMuiTheme({
+export const themeDefault = createMuiTheme({
   typography: {
     fontFamily: 'Poppins, sans-serif'
   },
@@ -88,8 +86,7 @@ const theme = createMuiTheme({
     },
     backgrounds: {
       main: '#ffffff',
-      input: '#ffffff',
-      dialog: '#202020'
+      input: '#ffffff'
     },
     componentStyles: {
       navigation: {
@@ -134,4 +131,128 @@ const theme = createMuiTheme({
   },
 });
 
-export default theme;
+export const themeLight = createMuiTheme({
+  typography: {
+    fontFamily: 'Poppins, sans-serif'
+  },
+  palette: {
+    primary: {
+      main: '#405166',
+      contrastText: '#ffffff'
+    },
+    secondary: {
+      main: '#d85b43',
+      contrastText: '#ffffff'
+    },
+    text: {
+      primary: '#405166',
+      secondary: '#253242',
+      hint: '#79889c'
+    },
+    backgrounds: {
+      main: '#ffffff',
+      input: '#ffffff'
+    },
+    componentStyles: {
+      navigation: {
+        main: {
+        },
+        dialog: {
+          background: 'linear-gradient(150deg,rgba(64, 81, 102,.6) 0%,rgba(64, 81, 102,1) 100%), linear-gradient(150deg,#ffffff 0%,#ffffff 100%)',
+          text: '#ffffff'
+        }
+      },
+      footer: {
+      },
+      dialog: {
+      },
+      input: {}
+    },
+    sectionStyles: {
+      hero: {
+        background: 'linear-gradient(150deg,rgba(255,255,255,.4) 0%,rgba(255,255,255,.4) 100%)'
+      },
+      banner: {
+        background: 'linear-gradient(150deg,rgba(255,255,255,.85) 0%,rgba(255,255,255,.85) 100%)',
+      },
+      contact: {
+      },
+      gallery: {
+      },
+      cards: {
+      },
+      location: {
+      },
+      quote: {
+      },
+      text: {
+      },
+      textWithImage: {
+      },
+    }
+  },
+});
+
+export const themeDark = createMuiTheme({
+  typography: {
+    fontFamily: 'Poppins, sans-serif'
+  },
+  palette: {
+    primary: {
+      main: '#405166',
+      contrastText: '#ffffff'
+    },
+    secondary: {
+      main: '#d85b43',
+      contrastText: '#ffffff'
+    },
+    text: {
+      primary: '#d2d2d2',
+      secondary: '#ffffff',
+      hint: '#dddddd'
+    },
+    backgrounds: {
+      main: '#202020',
+      input: '#202020'
+    },
+    componentStyles: {
+      navigation: {
+        main: {
+        },
+        dialog: {
+          background: 'linear-gradient(150deg,rgba(64, 81, 102,.6) 0%,rgba(64, 81, 102,1) 100%), linear-gradient(150deg,#ffffff 0%,#ffffff 100%)',
+          text: '#ffffff'
+        }
+      },
+      footer: {
+      },
+      dialog: {
+      },
+      input: {
+        background: '#282828'
+      }
+    },
+    sectionStyles: {
+      hero: {
+        background: 'linear-gradient(150deg,rgba(32,32,32,.4) 0%,rgba(32,32,32,.4) 100%)'
+      },
+      banner: {
+        background: 'linear-gradient(150deg,rgba(32,32,32,.85) 0%,rgba(32,32,32,.85) 100%)',
+      },
+      contact: {
+      },
+      gallery: {
+      },
+      cards: {
+      },
+      location: {
+      },
+      quote: {
+      },
+      text: {
+      },
+      textWithImage: {
+      },
+    }
+  },
+});

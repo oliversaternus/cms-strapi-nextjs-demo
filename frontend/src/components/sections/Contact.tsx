@@ -9,9 +9,6 @@ import { NotificationContext } from '../../contexts/NotificationContext';
 import StyledInput from '../styledComponents/StyledInput';
 import Button from '../styledComponents/StyledButton';
 import { validate } from 'email-validator';
-import StyledSelect from "../styledComponents/StyledSelect";
-
-const salutations = [{ value: 'Keine Anrede', label: 'Keine Anrede' }, { value: 'Herr', label: 'Herr' }, { value: 'Frau', label: 'Frau' }];
 
 interface ContactProps {
     contact: ContactSection;
@@ -153,36 +150,36 @@ const Contact: React.FC<ContactProps> = (props) => {
     const [message, setMessage] = useState<Message>({
         firstName: '',
         lastName: '',
-        salutation: 'Keine Anrede',
+        salutation: 'No salutation',
         email: '',
         content: '',
-        subject: 'Kontaktaufnahme'
+        subject: 'contact'
     });
     const { openNotification } = useContext(NotificationContext);
 
     const sendMessage = useCallback(async () => {
         if (!validate(message.email)) {
-            openNotification('error', 'Angegebene Email ist ungültig.');
+            openNotification('error', 'Email is invalid');
             return;
         }
         if (!message.firstName || !message.email || !message.lastName || !message.content) {
-            openNotification('error', 'Bitte füllen Sie alle Felder aus.');
+            openNotification('error', 'Pleas fill all fields.');
             return;
         }
         const response = await createMessage(message);
         if (response.isError) {
-            openNotification('error', 'Fehler beim Senden.');
+            openNotification('error', 'Message sending error');
             return;
         }
         setMessage({
             firstName: '',
             lastName: '',
-            salutation: 'Keine Anrede',
+            salutation: 'No salutation',
             email: '',
             content: '',
-            subject: 'Kontaktaufnahme'
+            subject: 'contact'
         });
-        openNotification('success', 'Nachricht versendet!');
+        openNotification('success', 'Message sent!');
     }, [message, validate, openNotification]);
 
     return (
@@ -193,20 +190,14 @@ const Contact: React.FC<ContactProps> = (props) => {
         >
             <div className={classes.container}>
                 <div className={classes.heading} dangerouslySetInnerHTML={{ __html: parsedContent }}></div>
-                <StyledSelect
-                    className={classes.input}
-                    value={message?.salutation}
-                    values={salutations}
-                    onChange={(e) => setMessage({ ...message, salutation: e.target?.value })}
-                />
                 <StyledInput
-                    placeholder='Vorname'
+                    placeholder='First Name'
                     className={classes.input}
                     value={message?.firstName}
                     onChange={(e) => setMessage({ ...message, firstName: e.target?.value })}
                 />
                 <StyledInput
-                    placeholder='Nachname'
+                    placeholder='Last Name'
                     className={classes.input}
                     value={message?.lastName}
                     onChange={(e) => setMessage({ ...message, lastName: e.target?.value })}
@@ -218,14 +209,14 @@ const Contact: React.FC<ContactProps> = (props) => {
                     onChange={(e) => setMessage({ ...message, email: e.target?.value })}
                 />
                 <StyledInput
-                    placeholder='Nachricht'
+                    placeholder='Message'
                     multiline
                     rows={8}
                     className={classes.input}
                     value={message?.content}
                     onChange={(e) => setMessage({ ...message, content: e.target?.value })}
                 />
-                <Button _color='primary' className={classes.sendButton} onClick={sendMessage}>Senden</Button>
+                <Button _color='primary' className={classes.sendButton} onClick={sendMessage}>Send</Button>
             </div >
         </div >
     );

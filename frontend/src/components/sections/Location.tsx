@@ -56,16 +56,27 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 const Location: React.FC<LocationProps> = (props) => {
     const { className, style, location } = props;
     const classes = useStyles();
-    const iframeURL = useMemo(() => `https://maps.google.com/maps?${stringify({
-        f: 'q',
-        source: 's_q',
-        hl: 'de',
-        ie: 'UTF8',
-        output: 'embed',
-        z: 14,
-        hnear: `${location.street || ''} ${location.house || ''}, ${location.code || ''} ${location.city || ''}`,
-        ...(location?.name && { q: location.name })
-    })}`, [location]);
+    const iframeURL = useMemo(() => (location.name ?
+        `https://maps.google.com/maps?${stringify({
+            f: 'q',
+            source: 's_q',
+            hl: 'en',
+            ie: 'UTF8',
+            output: 'embed',
+            z: 14,
+            hnear: `${location.street || ''} ${location.house || ''}, ${location.code || ''} ${location.city || ''}`,
+            q: location.name
+        })}`
+        :
+        `https://maps.google.com/maps?${stringify({
+            f: 'q',
+            source: 's_q',
+            hl: 'en',
+            ie: 'UTF8',
+            output: 'embed',
+            z: 14,
+            q: `${location.street || ''} ${location.house || ''}, ${location.code || ''} ${location.city || ''}`
+        })}`), [location]);
 
     return (
         <div

@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        textShadow: '0px 0px 16px ' + fade(theme.palette.sectionStyles.hero?.textShadow || theme.palette.backgrounds.main, 0.56),
+        textShadow: theme.palette.sectionStyles.hero?.textShadow && ('0px 0px 16px ' + theme.palette.sectionStyles.hero?.textShadow),
         '& h1': {
             paddingTop: 6,
             paddingBottom: 6,

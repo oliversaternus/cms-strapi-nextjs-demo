@@ -41,18 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
             paddingBottom: 24,
             fontSize: 16,
             position: 'relative',
-            display: 'flex',
-            '&:before': {
-                content: '""',
-                borderRadius: 3,
-                display: 'block',
-                height: 5,
-                width: 110,
-                backgroundColor: theme.palette.primary.main,
-                position: 'absolute',
-                top: 0,
-                left: 0
-            }
+            display: 'flex'
         },
         topic: {
             fontWeight: 600,
