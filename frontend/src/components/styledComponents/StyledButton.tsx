@@ -6,6 +6,7 @@ import Link from "next/link";
 import { TrackingEvent } from '../../tools/Models';
 import { ReactGA } from '../../tools/Analytics';
 import { useCallback } from "react";
+import { CookieContext } from "../../contexts/CookieContext";
 
 interface StyledIputProps extends ButtonProps {
     _color?: 'primary' | 'secondary' | 'light';
@@ -96,15 +97,16 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 const StyledButton: React.FC<StyledIputProps> = (props) => {
     const { className, style, children, _color, trackingEvent, link, onClick, ...others } = props;
     const classes = useStyles();
+    const { accepted } = React.useContext(CookieContext);
 
     const hasClicked = useCallback((event: React.MouseEvent<any, MouseEvent>) => {
         event.stopPropagation();
-        if (trackingEvent) {
+        if (accepted && trackingEvent) {
             ReactGA.event(trackingEvent);
         }
 
         onClick?.(event);
-    }, [onClick]);
+    }, [onClick, accepted, trackingEvent]);
 
     if (link && (link.startsWith('/'))) {
         return (
