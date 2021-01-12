@@ -73,7 +73,7 @@ function CustomApp(props: ExtendedAppProps) {
 
   const getPageTitle = useCallback(() => {
     if (pageProps?.page && pageProps.page.title && pageProps.page.subtitle) {
-      return `${pageProps.page.title || 'Blog'} | ${pageProps.page.subtitle || 'Post'}`;
+      return `${pageProps.page.title} | ${pageProps.page.subtitle}`;
     }
     if (pageProps?.page?.title) {
       return pageProps.page.title;
