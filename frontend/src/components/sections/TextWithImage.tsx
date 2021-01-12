@@ -176,7 +176,20 @@ const TextWithImage: React.FC<TextWithImageProps> = (props) => {
                     <div className={classes.textContent} dangerouslySetInnerHTML={{ __html: parsedContent }}>
 
                     </div>
-                    {text.button && <div className={classes.button}><Button link={text.button.link} _color='primary'>{text.button.content}</Button></div>}
+                    {text.button && <div className={classes.button}>
+                        <Button
+                            link={text.button.link}
+                            _color='primary'
+                            trackingEvent={{
+                                category: 'Interaction',
+                                action: 'Clicked Text Section Button' + (text.identifier ? ' #' + text.identifier : ''),
+                                label: text.button.content
+                            }}
+                        >
+                            {text.button.content}
+                        </Button>
+                    </div>
+                    }
                 </div>
             </div >
         </div >

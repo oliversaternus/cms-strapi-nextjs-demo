@@ -15,6 +15,7 @@ interface CardsProps {
 
 interface CardsItemProps {
     item: CardsSectionItem;
+    identifier?: string;
 }
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -251,7 +252,7 @@ const useCardStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 const CardItem: React.FC<CardsItemProps> = (props) => {
-    const { item } = props;
+    const { item, identifier } = props;
     const classes = useCardStyles();
     const parsedContent = useMemo(() => parse(item.content || ''), [item]);
     return (
@@ -259,7 +260,18 @@ const CardItem: React.FC<CardsItemProps> = (props) => {
             <div className={classes.container}>
                 {item.image && (item.variant === 'person' ? <div className={classes.avatarContainer}><Avatar className={classes.avatar} src={item.image.url} /></div> : <img className={classes.image} src={item.image.url} />)}
                 <div className={classes.cardContent} dangerouslySetInnerHTML={{ __html: parsedContent }}></div>
-                {item.link && item.linkText && <div className={classes.buttonContainer}><Button link={item.link} _color='primary'>{item.linkText}</Button></div>}
+                {item.link && item.linkText && <div className={classes.buttonContainer}>
+                    <Button
+                        link={item.link}
+                        _color='primary'
+                        trackingEvent={{
+                            category: 'Interaction',
+                            action: 'Clicked Card' + (identifier ? ' #' + identifier : ''),
+                            label: item.link
+                        }}
+                    >
+                        {item.linkText}
+                    </Button></div>}
             </div>
         </div>
     );
@@ -274,7 +286,7 @@ const Cards: React.FC<CardsProps> = (props) => {
         <div style={style} className={clsx(classes.root, className)} id={cards.identifier}>
             <div className={classes.heading} dangerouslySetInnerHTML={{ __html: parsedContent }}></div>
             <div className={classes.content} >
-                {cards.cards.map(item => <CardItem key={item.id} item={item} />)}
+                {cards.cards.map(item => <CardItem key={item.id} item={item} identifier={cards.identifier} />)}
             </div>
         </div>
     );

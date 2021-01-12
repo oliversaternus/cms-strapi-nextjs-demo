@@ -216,7 +216,16 @@ const Contact: React.FC<ContactProps> = (props) => {
                     value={message?.content}
                     onChange={(e) => setMessage({ ...message, content: e.target?.value })}
                 />
-                <Button _color='primary' className={classes.sendButton} onClick={sendMessage}>Send</Button>
+                <Button
+                    _color='primary'
+                    className={classes.sendButton}
+                    onClick={sendMessage}
+                    trackingEvent={{
+                        category: 'Interaction',
+                        action: 'Clicked Send Contact Form' + (contact.identifier ? ' #' + contact.identifier : ''),
+                        label: 'Send'
+                    }}
+                >Send</Button>
             </div >
         </div >
     );

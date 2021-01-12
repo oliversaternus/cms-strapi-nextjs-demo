@@ -94,7 +94,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 const StyledButton: React.FC<StyledIputProps> = (props) => {
-    const { className, style, children, _color, link, trackingEvent, onClick, ...others } = props;
+    const { className, style, children, _color, trackingEvent, link, onClick, ...others } = props;
     const classes = useStyles();
 
     const hasClicked = useCallback((event: React.MouseEvent<any, MouseEvent>) => {
@@ -102,6 +102,7 @@ const StyledButton: React.FC<StyledIputProps> = (props) => {
         if (trackingEvent) {
             ReactGA.event(trackingEvent);
         }
+
         onClick?.(event);
     }, [onClick]);
 

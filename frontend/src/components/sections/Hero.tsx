@@ -156,7 +156,20 @@ const Hero: React.FC<HeroProps> = (props) => {
                 <div className={classes.content} dangerouslySetInnerHTML={{ __html: parsedContent }}>
 
                 </div>
-                {hero.button && <Button className={classes.button} _color='light' link={hero.button.link} target='_self' >{hero.button.content}</Button>}
+                {hero.button &&
+                    <Button
+                        className={classes.button}
+                        _color='light'
+                        link={hero.button.link}
+                        target='_self'
+                        trackingEvent={{
+                            category: 'Interaction',
+                            action: 'Clicked Hero' + (hero.identifier ? ' #' + hero.identifier : ''),
+                            label: hero.button.content
+                        }}
+                    >
+                        {hero.button.content}
+                    </Button>}
                 {children}
             </div >
             {hero.image &&

@@ -238,12 +238,12 @@ export type Message = {
 }
 
 export type TrackingEvent = {
-    id: number;
     category: string;
     action: string;
     value?: number;
     label?: string;
     nonInteraction?: boolean;
+    transport?: 'beacon' | 'xhr' | 'image'
 }
 
 export type Integrations = {

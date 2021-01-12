@@ -160,7 +160,20 @@ const Banner: React.FC<BannerProps> = (props) => {
                 <div className={classes.content} dangerouslySetInnerHTML={{ __html: parsedContent }}>
 
                 </div>
-                {banner.button && <Button className={classes.button} _color='light' link={banner.button?.link}>{banner.button.content}</Button>}
+                {banner.button &&
+                    <Button
+                        className={classes.button}
+                        _color='light'
+                        link={banner.button?.link}
+                        trackingEvent={{
+                            category: 'Interaction',
+                            action: 'Clicked Banner' + (banner.identifier ? ' #' + banner.identifier : ''),
+                            label: banner.button.content
+                        }}
+                    >
+                        {banner.button.content}
+                    </Button>
+                }
                 {children}
             </div>
             {banner.image &&
