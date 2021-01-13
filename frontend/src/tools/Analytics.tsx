@@ -4,17 +4,28 @@ import ReactGA from 'react-ga';
 
 const Analytics: React.FC<{ trackingID?: string }> = ({ trackingID }) => {
     const [initialized, setInitialized] = useState(false);
-    const { accepted } = useContext(CookieContext);
+    const { accepted, sessionId } = useContext(CookieContext);
 
     useEffect(() => {
-        if (accepted && !initialized && trackingID) {
+        if (accepted === 'all' && !initialized && trackingID) {
             ReactGA.initialize(trackingID);
             if (!window.location.host.startsWith('localhost')) {
                 ReactGA.pageview(window.location.pathname);
             }
             setInitialized(true);
+            return;
         }
-    }, [accepted]);
+        if (accepted === 'essential' && !initialized && trackingID && sessionId) {
+
+            ReactGA.ga('create', trackingID, 'auto',
+                {
+                    'storage': 'none',
+                    'storeGac': false,
+                    'clientId': sessionId
+                }
+            );
+        }
+    }, [accepted, sessionId]);
 
     return null;
 }

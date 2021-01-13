@@ -101,7 +101,7 @@ const StyledButton: React.FC<StyledIputProps> = (props) => {
 
     const hasClicked = useCallback((event: React.MouseEvent<any, MouseEvent>) => {
         event.stopPropagation();
-        if (accepted && trackingEvent) {
+        if (accepted !== 'none' && trackingEvent) {
             ReactGA.event(trackingEvent);
         }
 

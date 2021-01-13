@@ -7,3 +7,5 @@ export const shallowMerge: <T>(input: { [key: string]: any }, mergeObject: { [ke
         input[key] = mergeObject[key];
     }
 };
+
+export const randomHex = (size: number) => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');

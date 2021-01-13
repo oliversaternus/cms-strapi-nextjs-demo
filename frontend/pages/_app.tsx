@@ -98,12 +98,12 @@ function CustomApp(props: ExtendedAppProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <CookieContextProvider initialValue={documentCookies.acceptedCookies || ''}>
+        <CookieContextProvider initialValue={documentCookies.acceptedCookies} session={documentCookies.sessionId}>
           <NotificationContextProvider>
             {integrations.Analytics?.enabled && <Analytics trackingID={integrations.Analytics.GATrackingID} />}
             {integrations.Chat?.enabled && <Chat tawkToID={integrations.Chat.TawkToID} />}
             {isLoading && <div className="loading-overlay" style={{ background: theme.palette.backgrounds.main }}><CircularProgress color='secondary' /></div>}
-            {documentCookies.acceptedCookies !== 'accepted' && documentCookies.acceptedCookies !== 'declined' && cookieConfig.enabled && <CookieMessage {...cookieConfig} />}
+            {!documentCookies.acceptedCookies || documentCookies.acceptedCookies === 'none' && cookieConfig.enabled && <CookieMessage {...cookieConfig} />}
             <Navigation
               logoSrc={logo?.url}
               links={navigation}

@@ -75,6 +75,9 @@ const useStyles = makeStyles(() =>
         button: {
             marginLeft: 16
         },
+        select: {
+
+        },
         '@media (max-width: 800px)': {
             cookieIcon: {
                 marginTop: 24,
@@ -89,19 +92,28 @@ const useStyles = makeStyles(() =>
     }),
 );
 
+const cookieTypes = [{
+    type: 'Essential',
+    info: 'Essential Cookies to run this Website'
+},
+{
+    type: 'Analytics & Tracking',
+    info: 'Third Party Cookies to enable Analytics and Live-Chat'
+}];
+
 const CookieDialog: React.FC<{ message?: string, enabled?: boolean }> = ({ message, enabled }) => {
     const classes = useStyles();
-    const { acceptCookies, declineCookies } = useContext(CookieContext);
+    const { acceptCookies } = useContext(CookieContext);
     const [open, setOpen] = useState(true);
     const parsedMessage = useMemo(() => parse(message || ''), [message]);
 
-    const decline = () => {
-        declineCookies();
+    const accept = () => {
+        acceptCookies('essential');
         setOpen(false);
     };
 
-    const accept = () => {
-        acceptCookies();
+    const acceptAll = () => {
+        acceptCookies('all');
         setOpen(false);
     };
 
@@ -117,10 +129,15 @@ const CookieDialog: React.FC<{ message?: string, enabled?: boolean }> = ({ messa
                     <div className={classes.message} dangerouslySetInnerHTML={{ __html: parsedMessage }}>
 
                     </div>
+                    <div className={classes.select}>
+                        {
+                            // TODO: add multiple select
+                        }
+                    </div>
                 </div>
                 <div className={classes.buttonsContainer}>
-                    <Button variant="contained" color="secondary" onClick={decline}>Decline</Button>
-                    <Button className={classes.button} variant="contained" color="primary" onClick={accept}>Accept</Button>
+                    <Button variant="contained" color="secondary" onClick={accept}>Save</Button>
+                    <Button className={classes.button} variant="contained" color="primary" onClick={acceptAll}>Accept All</Button>
                 </div>
             </div>
         </Dialog>
