@@ -28,12 +28,12 @@ export const CookieContextProvider: React.FC<{ initialValue?: string, session?: 
 
     useEffect(
         () => {
-            if (!sessionId) {
+            if (accepted !== 'none' && !sessionId) {
                 const id = randomHex(32);
                 document.cookie = `sessionId=${id}; path=/; max-age=31536000`;
                 setSessionId(sessionId);
             }
-        }, [session]
+        }, [accepted, session]
     );
 
     return (
