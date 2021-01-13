@@ -8,6 +8,10 @@ const TransitionSlide: any = React.forwardRef(function Transition(props: any, re
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
+const TransitionSlideRight: any = React.forwardRef(function Transition(props: any, ref) {
+    return <Slide direction="right" ref={ref} {...props} />;
+});
+
 const TransitionGrow: any = React.forwardRef(function Transition(props: any, ref) {
     return <Grow ref={ref} {...props} />;
 });
@@ -15,6 +19,21 @@ const TransitionGrow: any = React.forwardRef(function Transition(props: any, ref
 const TransitionFade: any = React.forwardRef(function Transition(props: any, ref) {
     return <Fade ref={ref} {...props} />;
 });
+
+const getTransition = (transition?: 'slide' | 'grow' | 'fade' | 'slide-right') => {
+    switch (transition) {
+        case 'fade':
+            return TransitionFade;
+        case 'grow':
+            return TransitionGrow;
+        case 'slide':
+            return TransitionSlide;
+        case 'slide-right':
+            return TransitionSlideRight;
+        default:
+            return TransitionFade;
+    }
+};
 
 const useStyles = makeStyles((theme: Theme) => ({
     content: {
@@ -78,7 +97,7 @@ interface DialogProps {
     className?: string;
     style?: any;
     light?: boolean;
-    transition?: 'slide' | 'grow' | 'fade';
+    transition?: 'slide' | 'grow' | 'fade' | 'slide-right';
     preventFullScreen?: boolean;
     contentRef?: ((instance: unknown) => void) | React.RefObject<unknown> | null | undefined;
     navigation?: boolean;
@@ -96,7 +115,7 @@ const Dialog: React.FC<DialogProps> = (props) => {
             classes={{ paper: isMobile ? classes.mobileDialogPaper : classes.dialogPaper }}
             maxWidth="lg"
             fullScreen={fullScreen}
-            TransitionComponent={transition === 'grow' ? TransitionGrow : (transition === 'fade' ? TransitionFade : TransitionSlide)}
+            TransitionComponent={getTransition(transition) as any}
         >
             <DialogContent ref={contentRef} className={clsx(classes.content, isMobile && classes.mobileContent, className)} style={style}>
                 {(title || icon) &&
@@ -113,7 +132,7 @@ const Dialog: React.FC<DialogProps> = (props) => {
                     <Close className={clsx(classes.closeIcon, light && classes.iconLight)} />
                 </IconButton>
             </DialogContent>
-        </MaterialUiDialog>);
+        </MaterialUiDialog >);
 };
 
 export default Dialog;

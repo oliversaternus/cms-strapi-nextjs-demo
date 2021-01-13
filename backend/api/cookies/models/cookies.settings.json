@@ -2,12 +2,13 @@
   "kind": "singleType",
   "collectionName": "cookies",
   "info": {
-    "name": "Cookies"
+    "name": "Cookies",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "enabled": {
@@ -15,6 +16,9 @@
     },
     "message": {
       "type": "richtext"
+    },
+    "configuration": {
+      "type": "json"
     }
   }
 }

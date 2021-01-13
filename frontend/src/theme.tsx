@@ -93,8 +93,7 @@ export const themeDefault = createMuiTheme({
         main: {
         },
         dialog: {
-          background: 'linear-gradient(150deg,rgba(64, 81, 102,.6) 0%,rgba(64, 81, 102,1) 100%), linear-gradient(150deg,#ffffff 0%,#ffffff 100%)',
-          text: '#ffffff'
+          background: 'linear-gradient(150deg,rgba(64, 81, 102,0) 0%,rgba(64, 81, 102,0) 100%), linear-gradient(150deg,#ffffff 0%,#ffffff 100%)'
         }
       },
       footer: {
@@ -158,8 +157,7 @@ export const themeLight = createMuiTheme({
         main: {
         },
         dialog: {
-          background: 'linear-gradient(150deg,rgba(64, 81, 102,.6) 0%,rgba(64, 81, 102,1) 100%), linear-gradient(150deg,#ffffff 0%,#ffffff 100%)',
-          text: '#ffffff'
+          background: 'linear-gradient(150deg,rgba(64, 81, 102,0) 0%,rgba(64, 81, 102,0.2) 100%), linear-gradient(150deg,#ffffff 0%,#ffffff 100%)',
         }
       },
       footer: {
@@ -220,7 +218,7 @@ export const themeDark = createMuiTheme({
         main: {
         },
         dialog: {
-          background: 'linear-gradient(150deg,rgba(64, 81, 102,.6) 0%,rgba(64, 81, 102,1) 100%), linear-gradient(150deg,#ffffff 0%,#ffffff 100%)',
+          background: '#282828',
           text: '#ffffff'
         }
       },

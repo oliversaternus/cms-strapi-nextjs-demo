@@ -176,8 +176,9 @@ const useStyles = makeStyles((theme: Theme) =>
             }
         },
         mobile: {
-            fontSize: 20,
-            fontWeight: 300,
+            color: theme.palette.componentStyles.navigation?.dialog.text || theme.palette.text.primary,
+            fontSize: 24,
+            fontWeight: 400,
             margin: 0,
             padding: 12
         },
@@ -342,8 +343,7 @@ const Navigation: React.FC<NavigationProps> = ({ transparent, links, logoSrc }) 
                         </Link>
                     </div>
                 }
-                transition='fade'
-                light
+                transition='slide-right'
                 className={classes.navMenu}
             >
                 <div className={classes.mobileLinkContainer}>
@@ -355,13 +355,13 @@ const Navigation: React.FC<NavigationProps> = ({ transparent, links, logoSrc }) 
                             <AccordionDetails className={classes.details}>
                                 {links?.[index]?.links?.map(item =>
                                     <Link href={item.path + ''} key={item.id}>
-                                        <a className={clsx(classes.link, classes.transparentLink, classes.mobile, classes.mobileSubLink)} onClick={handleCloseMenu}>{item.link}</a>
+                                        <a className={clsx(classes.link, classes.mobile, classes.mobileSubLink)} onClick={handleCloseMenu}>{item.link}</a>
                                     </Link>
                                 )}
                             </AccordionDetails>
                         </Accordion> :
                         <Link href={link.links?.[0]?.path + ''} key={link.id}>
-                            <a className={clsx(classes.link, classes.transparentLink, classes.mobile)} onClick={handleCloseMenu}>{link.title}</a>
+                            <a className={clsx(classes.link, classes.mobile)} onClick={handleCloseMenu}>{link.title}</a>
                         </Link>
                     )}
                 </div>

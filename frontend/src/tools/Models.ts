@@ -33,6 +33,11 @@ export type CookieConfig = {
     id?: number;
     enabled?: boolean;
     message?: string;
+    configuration?: Array<{
+        value: 'none' | 'essential' | 'all',
+        type: string,
+        info: string
+    }>
 };
 
 export type NavigationArea = Array<{
