@@ -103,7 +103,7 @@ function CustomApp(props: ExtendedAppProps) {
             {integrations.Analytics?.enabled && <Analytics trackingID={integrations.Analytics.GATrackingID} />}
             {integrations.Chat?.enabled && <Chat tawkToID={integrations.Chat.TawkToID} />}
             {isLoading && <div className="loading-overlay" style={{ background: theme.palette.backgrounds.main }}><CircularProgress color='secondary' /></div>}
-            {!documentCookies.acceptedCookies || documentCookies.acceptedCookies === 'none' && cookieConfig.enabled && <CookieMessage {...cookieConfig} />}
+            {(!documentCookies.acceptedCookies || documentCookies.acceptedCookies === 'none') && cookieConfig.enabled && <CookieMessage {...cookieConfig} />}
             <Navigation
               logoSrc={logo?.url}
               links={navigation}

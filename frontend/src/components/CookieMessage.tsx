@@ -1,9 +1,18 @@
 import React, { useState, useContext, useMemo } from 'react';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles, withStyles } from '@material-ui/core/styles';
 import Dialog from './styledComponents/StyledDialog';
-import { Button } from '@material-ui/core';
-import { CookieContext } from '../contexts/CookieContext';
+import { Button, Typography } from '@material-ui/core';
+import { CookieContext, AcceptCookieType } from '../contexts/CookieContext';
 import { parse } from 'marked';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
+import InfoIcon from '@material-ui/icons/InfoOutlined';
+import { TooltipProps } from '@material-ui/core/Tooltip';
+import Tooltip from '../components/styledComponents/StyledTooltip';
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -16,8 +25,9 @@ const useStyles = makeStyles(() =>
         },
         container: {
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            flexDirection: 'column'
         },
         cookieIcon: {
             width: 56,
@@ -26,7 +36,6 @@ const useStyles = makeStyles(() =>
         },
         message: {
             padding: 16,
-            paddingBottom: 32,
             maxWidth: 420,
             '& h1': {
                 fontSize: 20,
@@ -76,7 +85,23 @@ const useStyles = makeStyles(() =>
             marginLeft: 16
         },
         select: {
-
+            padding: 16,
+            paddingBottom: 32,
+            paddingTop: 0,
+        },
+        formLabel: {
+            fontSize: 14
+        },
+        formLabelRoot: {
+            height: 32
+        },
+        infoIcon: {
+            opacity: 0.4
+        },
+        selectContainer: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-start'
         },
         '@media (max-width: 800px)': {
             cookieIcon: {
@@ -92,11 +117,13 @@ const useStyles = makeStyles(() =>
     }),
 );
 
-const cookieTypes = [{
+const cookieTypes: Array<{ value: AcceptCookieType, type: string, info: string }> = [{
+    value: 'essential',
     type: 'Essential',
     info: 'Essential Cookies to run this Website'
 },
 {
+    value: 'all',
     type: 'Analytics & Tracking',
     info: 'Third Party Cookies to enable Analytics and Live-Chat'
 }];
@@ -106,9 +133,23 @@ const CookieDialog: React.FC<{ message?: string, enabled?: boolean }> = ({ messa
     const { acceptCookies } = useContext(CookieContext);
     const [open, setOpen] = useState(true);
     const parsedMessage = useMemo(() => parse(message || ''), [message]);
+    const [selected, setSelected] = useState<{ [key in AcceptCookieType]: boolean }>({
+        essential: true,
+        all: false,
+        none: false
+    });
+
+    const handleSelectChange = (value: AcceptCookieType) => (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSelected((current) => ({ ...current, [value]: event.target.checked }));
+    };
 
     const accept = () => {
-        acceptCookies('essential');
+        if (selected.all) {
+            acceptCookies('all');
+        }
+        else {
+            acceptCookies('essential');
+        }
         setOpen(false);
     };
 
@@ -131,7 +172,28 @@ const CookieDialog: React.FC<{ message?: string, enabled?: boolean }> = ({ messa
                     </div>
                     <div className={classes.select}>
                         {
-                            // TODO: add multiple select
+                            <FormControl>
+                                <FormGroup>
+                                    {cookieTypes?.map(cookieType =>
+                                        <div key={cookieType.value} className={classes.selectContainer}>
+                                            <FormControlLabel
+                                                className={classes.formLabelRoot}
+                                                disabled={cookieType.value === 'essential'}
+                                                classes={{ label: classes.formLabel }}
+                                                labelPlacement='end'
+                                                label={cookieType.type}
+                                                value={cookieType.value}
+                                                control={<Checkbox
+                                                    color='secondary'
+                                                    checked={selected[cookieType.value]}
+                                                    onChange={handleSelectChange(cookieType.value)}
+                                                />}
+                                            />
+                                            <Tooltip placement='right-start' title={cookieType.info}><InfoIcon className={classes.infoIcon} /></Tooltip>
+                                        </div>
+                                    )}
+                                </FormGroup>
+                            </FormControl>
                         }
                     </div>
                 </div>
