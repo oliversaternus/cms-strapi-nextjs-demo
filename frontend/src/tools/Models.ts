@@ -32,6 +32,7 @@ export type GlobalData = {
 export type CookieConfig = {
     id?: number;
     enabled?: boolean;
+    settingsEnabled?: boolean;
     message?: string;
     configuration?: Array<{
         value: 'none' | 'essential' | 'all',

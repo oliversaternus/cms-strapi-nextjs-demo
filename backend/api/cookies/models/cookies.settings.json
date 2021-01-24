@@ -19,6 +19,9 @@
     },
     "configuration": {
       "type": "json"
+    },
+    "settingsEnabled": {
+      "type": "boolean"
     }
   }
 }
