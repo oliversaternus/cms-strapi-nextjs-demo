@@ -41,10 +41,10 @@ function CustomApp(props: ExtendedAppProps) {
   const initialCookies = useMemo(() => {
     try {
       // documentCookies should be already parsed
-      if (typeof (documentCookies?.acceptedCookies as unknown) === 'object') {
+      if (typeof (documentCookies?.acceptedCookies as unknown) === 'object' && documentCookies?.acceptedCookies !== null) {
         return documentCookies?.acceptedCookies as unknown as AcceptCookieType;
       } else {
-        // could happen only if nextJS eventually changes it's cookie parsing behaviour
+        // could happen only if nextJS changes it's cookie parsing behaviour
         return JSON.parse(documentCookies?.acceptedCookies + '') as AcceptCookieType;
       }
     } catch (e) {
