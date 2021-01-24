@@ -12,7 +12,7 @@ import InfoIcon from '@material-ui/icons/InfoOutlined';
 import Tooltip from '../components/styledComponents/StyledTooltip';
 import Collapse from '@material-ui/core/Collapse';
 
-export type CookieOptionsConfig = Array<{ value: AcceptCookieType, type: string, info: string }>;
+export type CookieOptionsConfig = Array<{ value: string, type: string, info: string }>;
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -131,7 +131,7 @@ const CookieDialog: React.FC<{ message?: string, configuration?: CookieOptionsCo
     const [open, setOpen] = useState(true);
     const [settingsOpen, setSettingsOpen] = useState(false);
     const parsedMessage = useMemo(() => parse(message || ''), [message]);
-    const [selected, setSelected] = useState<{ [key in AcceptCookieType]: boolean }>({
+    const [selected, setSelected] = useState<AcceptCookieType>({
         essential: true,
         all: false,
         none: false
@@ -145,22 +145,21 @@ const CookieDialog: React.FC<{ message?: string, configuration?: CookieOptionsCo
 
     const allowSettings = useMemo(() => config && config.length && settingsEnabled, [config, config.length, settingsEnabled]);
 
-    const handleSelectChange = (value: AcceptCookieType) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSelectChange = (value: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
         setSelected((current) => ({ ...current, [value]: event.target.checked }));
     };
 
     const accept = () => {
-        if (selected.all) {
-            acceptCookies('all');
-        }
-        else {
-            acceptCookies('essential');
-        }
+        acceptCookies(selected);
         setOpen(false);
     };
 
     const acceptAll = () => {
-        acceptCookies('all');
+        acceptCookies({
+            essential: true,
+            all: true,
+            none: false
+        });
         setOpen(false);
     };
 

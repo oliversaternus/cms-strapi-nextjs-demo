@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { randomHex } from '../tools/Utils';
 
-export type AcceptCookieType = 'none' | 'essential' | 'all';
+export type AcceptCookieType = {
+    all: boolean;
+    none: boolean;
+    [key: string]: boolean;
+};
 
 export const CookieContext = React.createContext<{
     accepted: AcceptCookieType;
@@ -9,26 +13,29 @@ export const CookieContext = React.createContext<{
     sessionId?: string;
 }>(
     {
-        accepted: 'none',
+        accepted: {
+            all: false,
+            none: true
+        },
         acceptCookies: () => undefined,
         sessionId: undefined
     });
 
-export const CookieContextProvider: React.FC<{ initialValue?: string, session?: string }> = ({ children, initialValue, session }) => {
-    const [accepted, setAccepted] = useState((['none', 'essential', 'all'].includes(initialValue || '') ? initialValue : 'none') as AcceptCookieType);
+export const CookieContextProvider: React.FC<{ initialValue?: AcceptCookieType, session?: string }> = ({ children, initialValue, session }) => {
+    const [accepted, setAccepted] = useState(initialValue || { all: false, none: true });
     const [sessionId, setSessionId] = useState(session);
 
     const acceptCookies = (value: AcceptCookieType) => {
         if (!document) {
             return;
         }
-        document.cookie = `acceptedCookies=${value}; path=/; max-age=31536000`;
+        document.cookie = `acceptedCookies=${JSON.stringify(value)}; path=/; max-age=31536000`;
         setAccepted(value);
     };
 
     useEffect(
         () => {
-            if (accepted !== 'none' && !sessionId) {
+            if (!accepted?.none && !sessionId) {
                 const id = randomHex(32);
                 document.cookie = `sessionId=${id}; path=/; max-age=31536000`;
                 setSessionId(sessionId);

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import Head from 'next/head';
 import App, { AppContext, AppProps } from 'next/app';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -9,7 +9,7 @@ import { NotificationContextProvider } from '../src/contexts/NotificationContext
 import { CircularProgress } from '@material-ui/core';
 import cookies from 'next-cookies';
 import CookieMessage from '../src/components/CookieMessage';
-import { CookieContextProvider } from '../src/contexts/CookieContext';
+import { CookieContextProvider, AcceptCookieType } from '../src/contexts/CookieContext';
 import Analytics, { ReactGA } from '../src/tools/Analytics';
 import Chat from '../src/tools/Chat';
 import '../styles.css';
@@ -38,6 +38,18 @@ function CustomApp(props: ExtendedAppProps) {
   const { Component, pageProps, documentCookies, globalData, integrations, cookieConfig } = props;
   const { navigation, footer, logo, favicon, copyright, previewImage } = globalData;
   const [isLoading, setIsLoading] = useState(false);
+  const initialCookies = useMemo(() => {
+    try {
+      // documentCookies should be already parsed
+      if (typeof (documentCookies?.acceptedCookies as unknown) === 'object') {
+        return documentCookies?.acceptedCookies as unknown as AcceptCookieType;
+      } else {
+        // could happen only if nextJS eventually changes it's cookie parsing behaviour
+        return JSON.parse(documentCookies?.acceptedCookies + '') as AcceptCookieType;
+      }
+    } catch (e) {
+    }
+  }, [documentCookies]);
 
   React.useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side');
@@ -98,12 +110,12 @@ function CustomApp(props: ExtendedAppProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <CookieContextProvider initialValue={documentCookies.acceptedCookies} session={documentCookies.sessionId}>
+        <CookieContextProvider initialValue={initialCookies} session={documentCookies.sessionId}>
           <NotificationContextProvider>
-            {integrations.Analytics?.enabled && <Analytics trackingID={integrations.Analytics.GATrackingID} />}
-            {integrations.Chat?.enabled && <Chat tawkToID={integrations.Chat.TawkToID} />}
+            {integrations.Analytics?.enabled && <Analytics trackingID={integrations.Analytics.GATrackingID} cookieValue={integrations.Analytics.cookieValue} />}
+            {integrations.Chat?.enabled && <Chat tawkToID={integrations.Chat.TawkToID} cookieValue={integrations.Chat.cookieValue} />}
             {isLoading && <div className="loading-overlay" style={{ background: theme.palette.backgrounds.main }}><CircularProgress color='secondary' /></div>}
-            {(!documentCookies.acceptedCookies || documentCookies.acceptedCookies === 'none') && cookieConfig.enabled && <CookieMessage {...cookieConfig} />}
+            {(!initialCookies || initialCookies?.none === true) && cookieConfig.enabled && <CookieMessage {...cookieConfig} />}
             <Navigation
               logoSrc={logo?.url}
               links={navigation}

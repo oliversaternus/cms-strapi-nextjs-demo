@@ -256,11 +256,14 @@ export type Integrations = {
     Analytics?: {
         id: number;
         GATrackingID?: string;
+        cookieValue?: string;
+        anonymousTracking?: boolean;
         enabled?: boolean;
     },
     Chat?: {
         id: number;
         TawkToID?: string;
+        cookieValue?: string;
         enabled?: boolean;
     }
 }

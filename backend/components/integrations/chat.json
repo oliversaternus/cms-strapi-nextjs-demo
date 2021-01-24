@@ -2,7 +2,8 @@
   "collectionName": "components_integrations_chats",
   "info": {
     "name": "Chat",
-    "icon": "grin-alt"
+    "icon": "grin-alt",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,6 +12,9 @@
     },
     "enabled": {
       "type": "boolean"
+    },
+    "cookieValue": {
+      "type": "string"
     }
   }
 }
