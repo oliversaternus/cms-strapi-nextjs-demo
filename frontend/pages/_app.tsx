@@ -112,10 +112,30 @@ function CustomApp(props: ExtendedAppProps) {
         <CssBaseline />
         <CookieContextProvider initialValue={initialCookies} session={documentCookies.sessionId}>
           <NotificationContextProvider>
-            {integrations.Analytics?.enabled && <Analytics trackingID={integrations.Analytics.GATrackingID} cookieValue={integrations.Analytics.cookieValue} />}
-            {integrations.Chat?.enabled && <Chat tawkToID={integrations.Chat.TawkToID} cookieValue={integrations.Chat.cookieValue} />}
-            {isLoading && <div className="loading-overlay" style={{ background: theme.palette.backgrounds.main }}><CircularProgress color='secondary' /></div>}
-            {(!initialCookies || initialCookies?.none === true) && cookieConfig.enabled && <CookieMessage {...cookieConfig} />}
+            {integrations.Analytics?.enabled &&
+              <Analytics
+                trackingID={integrations.Analytics.GATrackingID}
+                cookieValue={integrations.Analytics.cookieValue}
+              />
+            }
+            {integrations.Chat?.enabled &&
+              <Chat
+                tawkToID={integrations.Chat.TawkToID}
+                cookieValue={integrations.Chat.cookieValue}
+              />
+            }
+            {isLoading &&
+              <div
+                className="loading-overlay"
+                style={{ background: theme.palette.backgrounds.main }}
+              >
+                <CircularProgress color='secondary' />
+              </div>
+            }
+            {(!initialCookies || initialCookies?.none === true) &&
+              cookieConfig.enabled &&
+              <CookieMessage {...cookieConfig} />
+            }
             <Navigation
               logoSrc={logo?.url}
               links={navigation}
