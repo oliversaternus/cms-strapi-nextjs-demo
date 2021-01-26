@@ -57,6 +57,7 @@ const Image: React.FC<ImageProps> = (props) => {
             <div className={classes.container}>
                 <div className={classes.background} style={{ backgroundImage: previewUrl ? `url(${previewUrl})` : undefined, ...style }}></div>
                 <Img
+                    key={src}
                     style={style}
                     src={src}
                     className={classes.image}
