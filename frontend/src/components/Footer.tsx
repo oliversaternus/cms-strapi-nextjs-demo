@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
             width: '100%',
             maxWidth: 1080,
             display: 'flex',
-            alignItems: 'center',
+            alignItems: 'flex-start',
             justifyContent: 'space-between',
             flexDirection: 'row',
             flexWrap: 'wrap',
@@ -123,7 +123,8 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         '@media (max-width: 800px)': {
             container: {
-                flexDirection: 'column'
+                flexDirection: 'column',
+                alignItems: 'center'
             }
         }
     }),
