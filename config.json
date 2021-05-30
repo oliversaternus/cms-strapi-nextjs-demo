@@ -1,0 +1,26 @@
+{
+	"domains": {
+		"backend": [
+			"api.domain.com"
+		],
+		"frotend": [
+			"domain.com"
+		]
+	},
+	"email": {
+		"address": "mail@domain.com",
+		"host": "smtp.mailhost.com",
+		"port": 587,
+		"password": "xxx"
+	},
+	"git": {
+		"project": "project_name",
+		"repository": "",
+		"username": "",
+		"password": ""
+	}
+	"ports": {
+		"frontend": 4578,
+		"backend": 1337
+	}
+}
