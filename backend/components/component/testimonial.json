@@ -1,0 +1,28 @@
+{
+    "collectionName": "components_component_testimonials",
+    "info": {
+        "name": "testimonial",
+        "icon": "address-card"
+    },
+    "options": {},
+    "attributes": {
+        "author": {
+            "type": "string"
+        },
+        "company": {
+            "type": "string"
+        },
+        "content": {
+            "type": "richtext"
+        },
+        "image": {
+            "model": "file",
+            "via": "related",
+            "allowedTypes": [
+                "images"
+            ],
+            "plugin": "upload",
+            "required": false
+        }
+    }
+}

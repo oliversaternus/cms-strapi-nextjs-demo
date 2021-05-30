@@ -13,9 +13,6 @@
       "type": "component",
       "repeatable": true,
       "component": "component.item"
-    },
-    "identifier": {
-      "type": "string"
     }
   }
 }

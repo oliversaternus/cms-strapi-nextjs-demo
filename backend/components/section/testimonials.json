@@ -1,7 +1,7 @@
 {
-    "collectionName": "components_section_columns",
+    "collectionName": "components_section_testimonials",
     "info": {
-      "name": "Columns",
+      "name": "Testimonials",
       "icon": "images"
     },
     "options": {},
@@ -9,11 +9,10 @@
       "heading": {
         "type": "text"
       },
-      "columns": {
+      "testimonials": {
         "type": "component",
         "repeatable": true,
-        "component": "component.item"
+        "component": "component.testimonial"
       }
     }
   }
-  

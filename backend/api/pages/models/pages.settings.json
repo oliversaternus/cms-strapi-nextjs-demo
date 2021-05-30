@@ -29,13 +29,12 @@
       "components": [
         "section.hero",
         "section.gallery",
-        "section.text-with-image",
-        "section.quote",
+        "section.columns",
+        "section.testimonials",
         "section.banner",
         "section.text",
         "section.contact",
-        "section.cards",
-        "section.location"
+        "section.cards"
       ]
     }
   }

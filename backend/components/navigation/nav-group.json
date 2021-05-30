@@ -6,9 +6,9 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
+	"title": {
+	  "type": "string"
+	},
     "links": {
       "type": "component",
       "repeatable": true,

@@ -8,9 +8,6 @@
   "attributes": {
     "heading": {
       "type": "text"
-    },
-    "identifier": {
-      "type": "string"
     }
   }
 }
