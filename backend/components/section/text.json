@@ -6,18 +6,8 @@
   },
   "options": {},
   "attributes": {
-    "headline": {
-      "type": "string"
-    },
     "content": {
       "type": "richtext"
-    },
-    "align": {
-      "type": "enumeration",
-      "enum": [
-        "left",
-        "right"
-      ]
     },
     "identifier": {
       "type": "string"

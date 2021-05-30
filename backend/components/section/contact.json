@@ -7,7 +7,7 @@
   "options": {},
   "attributes": {
     "heading": {
-      "type": "richtext"
+      "type": "text"
     },
     "identifier": {
       "type": "string"
