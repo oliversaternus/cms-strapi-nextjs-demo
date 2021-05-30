@@ -12,7 +12,7 @@
     "cards": {
       "type": "component",
       "repeatable": true,
-      "component": "component.card"
+      "component": "component.item"
     },
     "identifier": {
       "type": "string"

@@ -1,0 +1,24 @@
+{
+    "collectionName": "components_integrations_cookies",
+    "info": {
+      "name": "Cookies",
+      "icon": "grin-alt",
+      "description": ""
+    },
+    "options": {},
+    "attributes": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "richtext"
+        },
+        "configuration": {
+          "type": "json"
+        },
+        "settingsEnabled": {
+          "type": "boolean"
+        }
+      }
+  }
+  

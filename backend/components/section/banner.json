@@ -20,11 +20,6 @@
     },
     "identifier": {
       "type": "string"
-    },
-    "button": {
-      "type": "component",
-      "repeatable": false,
-      "component": "component.button"
     }
   }
 }

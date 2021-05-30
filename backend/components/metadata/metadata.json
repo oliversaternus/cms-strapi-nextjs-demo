@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_metadata_metadata",
+  "info": {
+    "name": "Metadata",
+    "icon": "info-circle",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "text"
+    },
+    "keywords": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

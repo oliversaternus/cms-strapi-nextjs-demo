@@ -10,6 +10,11 @@
     "draftAndPublish": false
   },
   "attributes": {
+    "Cookies": {
+      "type": "component",
+      "repeatable": false,
+      "component": "integrations.cookies"
+    },
     "Analytics": {
       "type": "component",
       "repeatable": false,

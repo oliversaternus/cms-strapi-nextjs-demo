@@ -16,14 +16,16 @@ module.exports = {
             if (url.startsWith('/')) {
                 url = strapi.config.get('server.url', 'http://localhost:1337') + url
             }
-            try {
-                previewData = await sharp(path.join(__dirname, '../', '../', '../', 'public', 'uploads', data.hash + data.ext + ''))
-                    .resize(36)
-                    .jpeg({ quality: 80 })
-                    .toBuffer();
-            } catch (e) {
+            if (['.png', '.jpg', '.webp'].includes(data.ext)) {
+                try {
+                    previewData = await sharp(path.join(__dirname, '../', '../', '../', 'public', 'uploads', data.hash + data.ext + ''))
+                        .resize(36)
+                        .jpeg({ quality: 80 })
+                        .toBuffer();
+                    previewData && (data.previewUrl = `data:image/jpeg;base64,${previewData.toString('base64')}`);
+                } catch (e) {
+                }
             }
-            previewData && (data.previewUrl = `data:image/jpeg;base64,${previewData.toString('base64')}`);
             data.formats = formats;
             data.url = url;
         },
@@ -39,13 +41,15 @@ module.exports = {
             }
             formats && (data.formats = formats);
             url && (data.url = url);
-            try {
-                previewData = await sharp(path.join(__dirname, '../', '../', '../', 'public', 'uploads', data.hash + data.ext + ''))
-                    .resize(36)
-                    .jpeg({ quality: 80 })
-                    .toBuffer();
-                previewData && (data.previewUrl = `data:image/jpeg;base64,${previewData.toString('base64')}`);
-            } catch (e) {
+            if (['.png', '.jpg', '.webp'].includes(data.ext)) {
+                try {
+                    previewData = await sharp(path.join(__dirname, '../', '../', '../', 'public', 'uploads', data.hash + data.ext + ''))
+                        .resize(36)
+                        .jpeg({ quality: 80 })
+                        .toBuffer();
+                    previewData && (data.previewUrl = `data:image/jpeg;base64,${previewData.toString('base64')}`);
+                } catch (e) {
+                }
             }
         }
     }
