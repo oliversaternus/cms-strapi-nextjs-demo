@@ -204,15 +204,15 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
     }, []);
 
     return (
-        <div
+        <section
             style={style}
-            className={clsx(classes.root, className)}
+            className={clsx(classes.root, className, 'section-testimonials')}
             id={testimonials.identifier}
         >
             <div className={clsx(classes.container)}>
                 <TestimonialsItem key={selected.id} {...selected} />
             </div>
-        </div>
+        </section>
     );
 };
 
