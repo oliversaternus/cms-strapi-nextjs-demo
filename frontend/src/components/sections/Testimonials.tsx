@@ -21,8 +21,6 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        background: theme.palette.sectionStyles.quote?.background || theme.palette.backgrounds.main,
-        color: theme.palette.sectionStyles.quote?.text || theme.palette.text.primary,
         position: 'relative',
         overflow: 'hidden'
     },
@@ -32,84 +30,12 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         display: 'flex',
         justifyContent: 'center',
         flexDirection: 'column',
-        alignItems: 'center',
-        zIndex: 2
-    },
-    left: {
-        flexDirection: 'row'
-    },
-    right: {
-        flexDirection: 'row-reverse'
+        alignItems: 'center'
     },
     quoteContent: {
         paddingTop: 18,
         textAlign: 'center',
-        opacity: 0.8,
-        '& h1': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 20,
-            fontWeight: 400,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.quote?.textLight || theme.palette.text.hint,
-        },
-        '& h2': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 20,
-            fontWeight: 400,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.quote?.textLight || theme.palette.text.hint
-        },
-        '& h3': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 20,
-            fontWeight: 400,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.quote?.textLight || theme.palette.text.hint
-        },
-        '& h4': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 20,
-            fontWeight: 400,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.quote?.textLight || theme.palette.text.hint
-        },
-        '& h5': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 20,
-            fontWeight: 400,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.quote?.textLight || theme.palette.text.hint
-        },
-        '& p': {
-            margin: 0,
-            fontSize: 20,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.quote?.text || theme.palette.text.primary
-        },
-        '& ul': {
-            margin: 0,
-            fontSize: 20,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.quote?.text || theme.palette.text.primary,
-            paddingLeft: 18
-        },
-        '& ol': {
-            margin: 0,
-            fontSize: 20,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.quote?.text || theme.palette.text.primary,
-            paddingLeft: 18
-        }
+        opacity: 0.8
     },
     quoteIcon: {
         width: 48,
