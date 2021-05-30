@@ -37,43 +37,6 @@ const useStyles = makeStyles(() =>
         message: {
             padding: 16,
             maxWidth: 420,
-            '& h1': {
-                fontSize: 20,
-                fontWeight: 600
-            },
-            '& h2': {
-                fontSize: 20,
-                fontWeight: 600
-            },
-            '& h3': {
-                fontSize: 18,
-                fontWeight: 600
-            },
-            '& h4': {
-                fontSize: 18,
-                fontWeight: 600
-            },
-            '& h5': {
-                fontSize: 14,
-                fontWeight: 400
-            },
-            '& p': {
-                margin: 0,
-                fontSize: 14,
-                fontWeight: 400
-            },
-            '& ul': {
-                margin: 0,
-                paddingLeft: 18,
-                fontSize: 14,
-                fontWeight: 400
-            },
-            '& ol': {
-                margin: 0,
-                paddingLeft: 18,
-                fontSize: 14,
-                fontWeight: 400
-            },
         },
         buttonsContainer: {
             paddingTop: 16,

@@ -46,66 +46,6 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     right: {
         flexDirection: 'row-reverse'
     },
-    heading: {
-        color: theme.palette.sectionStyles.contact?.text || theme.palette.text.primary,
-        '& h1': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& h2': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& h3': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& h4': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& h5': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& p': {
-            margin: 0,
-            fontSize: 16,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.contact?.text || theme.palette.text.primary
-        },
-        '& ul': {
-            margin: 0,
-            paddingBottom: 32,
-            fontSize: 16,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.contact?.text || theme.palette.text.primary,
-            paddingLeft: 18
-        },
-        '& ol': {
-            margin: 0,
-            paddingBottom: 32,
-            fontSize: 16,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.contact?.text || theme.palette.text.primary,
-            paddingLeft: 18
-        }
-    },
     input: {
         width: '100%',
         maxWidth: 480,
@@ -116,14 +56,6 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
     sendButton: {
         marginTop: 12
-    },
-    headline: {
-        width: '50%',
-        maxWidth: 380,
-        fontSize: 32,
-        fontWeight: 600,
-        lineHeight: 1.2,
-        color: theme.palette.sectionStyles.contact?.text || theme.palette.text.primary
     },
     '@media (max-width: 1000px)': {
         textContent: {
@@ -183,13 +115,13 @@ const Contact: React.FC<ContactProps> = (props) => {
     }, [message, validate, openNotification]);
 
     return (
-        <div
+        <section
             style={style}
-            className={clsx(classes.root, className)}
+            className={clsx(classes.root, className, 'section-contact')}
             id={contact.identifier}
         >
             <div className={classes.container}>
-                <div className={classes.heading} dangerouslySetInnerHTML={{ __html: parsedContent }}></div>
+                <div dangerouslySetInnerHTML={{ __html: parsedContent }}></div>
                 <StyledInput
                     placeholder='First Name'
                     className={classes.input}
@@ -227,7 +159,7 @@ const Contact: React.FC<ContactProps> = (props) => {
                     }}
                 >Send</Button>
             </div >
-        </div >
+        </section>
     );
 };
 

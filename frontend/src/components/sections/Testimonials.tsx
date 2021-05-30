@@ -1,10 +1,9 @@
-import * as React from "react";
+import React, { useMemo, useEffect } from "react";
 import clsx from "clsx";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
-import { Avatar, Theme } from "@material-ui/core";
+import { Avatar, Theme, Fade } from "@material-ui/core";
 import { TestimonialsSection, TestimonialsSectionItem } from '../../tools/Models';
 import { parse } from 'marked';
-import { useMemo } from "react";
 
 interface TestimonialsProps {
     testimonials: TestimonialsSection;
@@ -163,23 +162,25 @@ const TestimonialsItem: React.FC<TestimonialsSectionItem> = (props) => {
     const classes = useStyles();
     const parsedContent = useMemo(() => parse(content || ''), [content]);
     return (
-        <>
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 8 8" className={classes.quoteIcon}>
-                <path d="M3,1.3C2,1.7,1.2,2.7,1.2,3.6c0,0.2,0,0.4,0.1,0.5c0.2-0.2,0.5-0.3,0.9-0.3c0.8,0,1.5,0.6,1.5,1.5c0,0.9-0.7,1.5-1.5,1.5     C1.4,6.9,1,6.6,0.7,6.1C0.4,5.6,0.3,4.9,0.3,4.5c0-1.6,0.8-2.9,2.5-3.7L3,1.3z M7.1,1.3c-1,0.4-1.8,1.4-1.8,2.3     c0,0.2,0,0.4,0.1,0.5c0.2-0.2,0.5-0.3,0.9-0.3c0.8,0,1.5,0.6,1.5,1.5c0,0.9-0.7,1.5-1.5,1.5c-0.7,0-1.1-0.3-1.4-0.8     C4.4,5.6,4.4,4.9,4.4,4.5c0-1.6,0.8-2.9,2.5-3.7L7.1,1.3z"></path>
-            </svg>
-            <div className={classes.quoteContent} dangerouslySetInnerHTML={{ __html: parsedContent }} />
-            <div className={classes.authorContainer}>
-                <Avatar
-                    className={classes.avatar}
-                    alt={author}
-                    src={image?.formats?.thumbnail?.url}
-                />
-                <div className={classes.authorInnerContainer}>
-                    <div className={classes.author}>{author}</div>
-                    {company && <div className={classes.company}>{company}</div>}
+        <Fade in={true}>
+            <>
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 8 8" className={classes.quoteIcon}>
+                    <path d="M3,1.3C2,1.7,1.2,2.7,1.2,3.6c0,0.2,0,0.4,0.1,0.5c0.2-0.2,0.5-0.3,0.9-0.3c0.8,0,1.5,0.6,1.5,1.5c0,0.9-0.7,1.5-1.5,1.5     C1.4,6.9,1,6.6,0.7,6.1C0.4,5.6,0.3,4.9,0.3,4.5c0-1.6,0.8-2.9,2.5-3.7L3,1.3z M7.1,1.3c-1,0.4-1.8,1.4-1.8,2.3     c0,0.2,0,0.4,0.1,0.5c0.2-0.2,0.5-0.3,0.9-0.3c0.8,0,1.5,0.6,1.5,1.5c0,0.9-0.7,1.5-1.5,1.5c-0.7,0-1.1-0.3-1.4-0.8     C4.4,5.6,4.4,4.9,4.4,4.5c0-1.6,0.8-2.9,2.5-3.7L7.1,1.3z"></path>
+                </svg>
+                <div className={classes.quoteContent} dangerouslySetInnerHTML={{ __html: parsedContent }} />
+                <div className={classes.authorContainer}>
+                    <Avatar
+                        className={classes.avatar}
+                        alt={author}
+                        src={image?.formats?.thumbnail?.url}
+                    />
+                    <div className={classes.authorInnerContainer}>
+                        <div className={classes.author}>{author}</div>
+                        {company && <div className={classes.company}>{company}</div>}
+                    </div>
                 </div>
-            </div>
-        </>
+            </>
+        </Fade>
     );
 };
 
@@ -187,6 +188,21 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
     const { className, style, testimonials } = props;
     const classes = useStyles();
     const [selected, setSelected] = React.useState(testimonials.items[0]);
+
+    const selectNext = () => {
+        const currentIndex = testimonials.items.findIndex(testimonial => testimonial.id === selected.id);
+        if (currentIndex !== -1 && currentIndex + 1 < testimonials.items.length) {
+            setSelected(testimonials.items[currentIndex + 1]);
+        } else {
+            setSelected(testimonials.items[0]);
+        }
+    };
+
+    useEffect(() => {
+        const interval = setInterval(selectNext, 5000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <div
             style={style}

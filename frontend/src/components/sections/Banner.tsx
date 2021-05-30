@@ -60,86 +60,6 @@ const useStyles = makeStyles((theme) => createStyles({
         right: 0,
         background: theme.palette.sectionStyles.banner?.background || theme.palette.backgrounds.main
     },
-    content: {
-        maxWidth: 800,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        '& h1': {
-            textAlign: 'center',
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 40,
-            fontWeight: 600,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary
-        },
-        '& h2': {
-            textAlign: 'center',
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 40,
-            fontWeight: 600,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary
-        },
-        '& h3': {
-            textAlign: 'center',
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 600,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary
-        },
-        '& h4': {
-            textAlign: 'center',
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 28,
-            fontWeight: 600,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary
-        },
-        '& h5': {
-            textAlign: 'center',
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 24,
-            fontWeight: 600,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary
-        },
-        '& p': {
-            textAlign: 'center',
-            margin: 0,
-            fontSize: 20,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary
-        },
-        '& ul': {
-            textAlign: 'center',
-            margin: 0,
-            fontSize: 20,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary,
-            paddingLeft: 18
-        },
-        '& ol': {
-            textAlign: 'center',
-            margin: 0,
-            fontSize: 20,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.banner?.text || theme.palette.text.secondary,
-            paddingLeft: 18
-        }
-    },
     '@media (max-width: 1000px)': {
         root: {
             padding: 24,
@@ -155,9 +75,9 @@ const Banner: React.FC<BannerProps> = (props) => {
     const parsedContent = useMemo(() => parse(banner.content || ''), [banner]);
 
     return (
-        <div className={clsx(classes.root, className)} id={banner.identifier}>
+        <section className={clsx(classes.root, className, 'section-banner')} id={banner.identifier}>
             <div className={classes.container}>
-                <div className={classes.content} dangerouslySetInnerHTML={{ __html: parsedContent }}>
+                <div dangerouslySetInnerHTML={{ __html: parsedContent }}>
 
                 </div>
                 {banner.button &&
@@ -184,7 +104,7 @@ const Banner: React.FC<BannerProps> = (props) => {
                 />
             }
             <div className={classes.imageOverlay} />
-        </div>
+        </section>
     );
 };
 

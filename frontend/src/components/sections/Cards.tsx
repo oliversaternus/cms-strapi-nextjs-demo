@@ -37,75 +37,6 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         flexWrap: 'wrap',
         color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
     },
-    heading: {
-        width: '100%',
-        maxWidth: 1016,
-        padding: 24,
-        paddingTop: 0,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingBottom: 48,
-        color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary,
-        '& h1': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& h2': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& h3': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& h4': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& h5': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& p': {
-            margin: 0,
-            fontSize: 16,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
-        },
-        '& ul': {
-            margin: 0,
-            paddingBottom: 32,
-            fontSize: 16,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary,
-            paddingLeft: 18
-        },
-        '& ol': {
-            margin: 0,
-            paddingBottom: 32,
-            fontSize: 16,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary,
-            paddingLeft: 18
-        }
-    },
     '@media (max-width: 800px)': {
         root: {
             padding: 32,
@@ -138,88 +69,6 @@ const useCardStyles = makeStyles((theme: Theme) => createStyles({
         height: 86,
         marginBottom: 16,
         opacity: 0.8
-    },
-    cardContent: {
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        '& h1': {
-            paddingTop: 6,
-            paddingBottom: 12,
-            margin: 0,
-            textAlign: 'center',
-            fontSize: 24,
-            fontWeight: 400,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
-        },
-        '& h2': {
-            paddingTop: 6,
-            paddingBottom: 12,
-            margin: 0,
-            textAlign: 'center',
-            fontSize: 24,
-            fontWeight: 400,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
-        },
-        '& h3': {
-            paddingTop: 6,
-            paddingBottom: 12,
-            margin: 0,
-            textAlign: 'center',
-            fontSize: 24,
-            fontWeight: 400,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
-        },
-        '& h4': {
-            paddingTop: 6,
-            paddingBottom: 12,
-            margin: 0,
-            textAlign: 'center',
-            fontSize: 24,
-            fontWeight: 400,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
-        },
-        '& h5': {
-            paddingTop: 6,
-            paddingBottom: 12,
-            margin: 0,
-            textAlign: 'center',
-            fontSize: 24,
-            fontWeight: 400,
-            lineHeight: 1.2,
-            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
-        },
-        '& p': {
-            margin: 0,
-            fontSize: 16,
-            textAlign: 'center',
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary
-        },
-        '& ul': {
-            margin: 0,
-            paddingBottom: 32,
-            fontSize: 16,
-            textAlign: 'center',
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary,
-            paddingLeft: 18
-        },
-        '& ol': {
-            margin: 0,
-            paddingBottom: 32,
-            textAlign: 'center',
-            fontSize: 16,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.cards?.text || theme.palette.text.primary,
-            paddingLeft: 18
-        }
     },
     buttonContainer: {
         marginTop: 24,
@@ -259,7 +108,7 @@ const CardItem: React.FC<CardsItemProps> = (props) => {
         <div className={classes.root}>
             <div className={classes.container}>
                 {item.image && (item.variant === 'person' ? <div className={classes.avatarContainer}><Avatar className={classes.avatar} src={item.image.url} /></div> : <img className={classes.image} src={item.image.url} />)}
-                <div className={classes.cardContent} dangerouslySetInnerHTML={{ __html: parsedContent }}></div>
+                <div dangerouslySetInnerHTML={{ __html: parsedContent }}></div>
                 {item.link && item.linkText && <div className={classes.buttonContainer}>
                     <Button
                         link={item.link}
@@ -283,12 +132,12 @@ const Cards: React.FC<CardsProps> = (props) => {
     const classes = useStyles();
     const parsedContent = useMemo(() => parse(heading || ''), [heading]);
     return (
-        <div style={style} className={clsx(classes.root, className)} id={cards.identifier}>
-            <div className={classes.heading} dangerouslySetInnerHTML={{ __html: parsedContent }}></div>
+        <section style={style} className={clsx(classes.root, className, 'section-cards')} id={cards.identifier}>
+            <div dangerouslySetInnerHTML={{ __html: parsedContent }}></div>
             <div className={classes.content} >
                 {cards.cards.map(item => <CardItem key={item.id} item={item} identifier={cards.identifier} />)}
             </div>
-        </div>
+        </section>
     );
 };
 

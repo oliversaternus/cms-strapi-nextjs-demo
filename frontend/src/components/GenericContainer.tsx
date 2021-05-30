@@ -7,6 +7,7 @@ import Text from './sections/Text';
 import Testimonials from './sections/Testimonials';
 import Contact from './sections/Contact';
 import Gallery from './sections/Gallery';
+import Columns from './sections/Columns';
 
 interface GenericContentProps {
     content?: PageContent[];
@@ -34,6 +35,8 @@ const GenericContent: React.FC<GenericContentProps> = (props) => {
                         return <Contact key={`contact-${item.id}`} contact={(item as ContactSection)} />
                     case 'section.gallery':
                         return <Gallery key={`gallery-${item.id}`} gallery={(item as GallerySection)} />
+                    case 'section.columns':
+                        return <Columns key={`columns-${item.id}`} columns={(item as ColumnsSection)} />
                 }
                 return null;
             })}

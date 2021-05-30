@@ -152,9 +152,9 @@ const Gallery: React.FC<GalleryProps> = (props) => {
     const parsedHeading = useMemo(() => parse(gallery.heading || ''), [gallery]);
 
     return (
-        <div
+        <section
             style={style}
-            className={clsx(classes.root, className)}
+            className={clsx(classes.root, className, 'section-gallery')}
             id={gallery.identifier}
         >
             {gallery.heading &&
@@ -172,7 +172,7 @@ const Gallery: React.FC<GalleryProps> = (props) => {
                     </div>
                 )}
             </div >
-        </div >
+        </section>
     );
 };
 

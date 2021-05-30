@@ -201,6 +201,7 @@ export type ColumnsSection = {
     __component: string;
     id: number;
     identifier?: string;
+    headline?: string;
     items: ColumnsSectionItem[];
 };
 

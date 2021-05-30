@@ -147,9 +147,9 @@ const Hero: React.FC<HeroProps> = (props) => {
     const classes = useStyles();
     const parsedContent = useMemo(() => parse(hero.content || ''), [hero]);
     return (
-        <div
+        <section
             style={style}
-            className={clsx(classes.root, className)}
+            className={clsx(classes.root, className, 'section-hero')}
             id={hero.identifier}
         >
             <div className={classes.container}>
@@ -182,7 +182,7 @@ const Hero: React.FC<HeroProps> = (props) => {
                     <div className={classes.imageOverlay} />
                 </>
             }
-        </div >
+        </section>
     );
 };
 
