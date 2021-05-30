@@ -12,7 +12,6 @@ import CookieMessage from '../src/components/CookieMessage';
 import { CookieContextProvider, AcceptCookieType } from '../src/contexts/CookieContext';
 import Analytics, { ReactGA } from '../src/tools/Analytics';
 import Chat from '../src/tools/Chat';
-import '../styles.css';
 import { getCookieConfig, getGlobalData, getIntegrations } from '../src/tools/Service';
 import { CookieConfig, GlobalData, Integrations } from '../src/tools/Models';
 import Navigation from '../src/components/Navigation';
@@ -36,7 +35,7 @@ interface ExtendedAppProps extends AppProps {
 
 function CustomApp(props: ExtendedAppProps) {
   const { Component, pageProps, documentCookies, globalData, integrations, cookieConfig } = props;
-  const { navigation, footer, logo, favicon, copyright, previewImage } = globalData;
+  const { navigation, footer, logo, favicon, copyright, previewImage, styles } = globalData;
   const [isLoading, setIsLoading] = useState(false);
   const initialCookies = useMemo(() => {
     try {
@@ -106,6 +105,7 @@ function CustomApp(props: ExtendedAppProps) {
         <meta name="theme-color" content="#405166" />
         <meta property="og:title" content={getPageTitle()} />
         <meta property="og:description" content={pageProps?.description || defaultMeta.description} />
+        <link rel="stylesheet" href={styles?.url || "/styles.css"} />
         {previewImage && <meta property="og:image" content={previewImage?.url} />}
       </Head>
       <ThemeProvider theme={theme}>

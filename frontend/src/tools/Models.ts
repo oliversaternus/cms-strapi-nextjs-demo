@@ -27,6 +27,7 @@ export type GlobalData = {
     copyright?: string;
     navigation?: NavigationArea;
     footer?: NavigationArea;
+    styles?: File;
 };
 
 export type CookieConfig = {
@@ -51,7 +52,7 @@ export type NavigationArea = Array<{
     }>;
 }>;
 
-export type PageContent = (HeroSection | CardsSection | BannerSection | QuoteSection | TextSection | TextWithImageSection);
+export type PageContent = (HeroSection | CardsSection | BannerSection | TestimonialsSection | TextSection | ColumnsSection | DocumentsSection);
 
 export type Section = {
     __component: string;
@@ -112,6 +113,22 @@ export type Image = {
     size: number;
     url: string;
     previewUrl?: string;
+    provider: string;
+    provider_metadata?: string;
+    created_at: string;
+    updated_at: string;
+};
+
+export type File = {
+    id: number;
+    name: string;
+    alternativeText: string;
+    caption: string;
+    hash: string;
+    ext: string;
+    mime: string;
+    size: number;
+    url: string;
     provider: string;
     provider_metadata?: string;
     created_at: string;
@@ -180,25 +197,32 @@ export type TextSection = {
     align?: 'left' | 'right'
 };
 
-export type TextWithImageSection = {
+export type ColumnsSection = {
     __component: string;
     id: number;
     identifier?: string;
-    content?: string;
-    button?: ButtonComponent;
-    image?: Image;
-    align?: 'left' | 'right'
+    items: ColumnsSectionItem[];
 };
 
-export type QuoteSection = {
+export type ColumnsSectionItem = {
+    id: number;
+    content?: string;
+}
+
+export type TestimonialsSection = {
     __component: string;
     id: number;
     identifier?: string;
+    items: TestimonialsSectionItem[];
+};
+
+export type TestimonialsSectionItem = {
+    id: number;
     content?: string;
     author?: string;
     image?: Image;
     company?: string;
-};
+}
 
 export type ContactSection = {
     __component: string;
@@ -215,16 +239,12 @@ export type GallerySection = {
     images?: Image[];
 };
 
-export type LocationSection = {
+export type DocumentsSection = {
     __component: string;
     id: number;
     identifier?: string;
+    files: File[];
     headline?: string;
-    name?: string;
-    city?: string;
-    code?: string;
-    street?: string;
-    house?: string;
 };
 
 export type ButtonComponent = {

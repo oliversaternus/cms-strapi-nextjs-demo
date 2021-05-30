@@ -1,0 +1,252 @@
+/*
+* Imports
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/*
+* Theme Variables
+*/
+
+:root {
+    --blue: #377dff;
+    --indigo: #2d1582;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #de4437;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #00c9a7;
+    --cyan: #00dffc;
+    --white: #fff;
+    --gray: #8c98a4;
+    --gray-dark: #343a40;
+    --primary: #377dff;
+    --primary-faded: #377dff70;
+    --secondary: #77838f;
+    --success: #00c9a7;
+    --info: #00dffc;
+    --warning: #ffc107;
+    --danger: #de4437;
+    --light: #f8f9fa;
+    --dark: #1e2022;
+    --white: #fff;
+    --indigo: #2d1582;
+
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+
+    --font-family-sans-serif: "Poppins", sans-serif;
+}
+
+/*
+* Globals
+*/
+
+* {
+    font-family: var(--font-family-sans-serif);
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    word-break: break-word;
+}
+
+html, body {
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: var(--white);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/*
+* App root element
+*/
+
+#__next {
+    width: 100%;
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+/*
+* Styles for markdown content
+*/
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding-top: 6px;
+    padding-bottom: 12px;
+    color: var(--gray-dark);
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 44px;
+    font-weight: 700px;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+h4 {
+    font-size: 28px;
+    font-weight: 300;
+}
+
+h5 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+h6 {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+p {
+    margin: 0;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--gray-dark);
+}
+
+ul {
+    margin: 0;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 18px;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--gray-dark);
+}
+
+ol {
+    margin: 0;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 18px;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--gray-dark);
+}
+
+img {
+    max-width: 100%;
+    margin: auto;
+    display: block;
+}
+
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 17px;
+    font-weight: 400;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+}
+
+td {
+    max-width: 600px;
+    padding: 8px;
+}
+
+th {
+    font-weight: 600;
+    padding: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+th:first-child {
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: var(--primary-faded);
+}
+
+strong {
+    font-weight: 600;
+}
+
+/*
+* Markdown styles for individual sections
+*/
+
+.section-hero * {
+    color: var(--white);
+}
+
+.section-banner * {
+    color: var(--white);
+}
+
+/*
+* Loading overlay element
+*/
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+}
+
+/*
+* Media queries
+*/
+
+@media (max-width: 800px) {
+    h1 {
+        font-size: 32px;
+    }
+    h2 {
+        font-size: 28px;
+    }
+    h3 {
+        font-size: 24px;
+    }
+    h4 {
+        font-size: 20px;
+    }
+    h5 {
+        font-size: 18px;
+    }
+    h6 {
+        font-size: 16px;
+    }
+    table {
+        word-break: break-word;
+        font-size: 12.8px;
+    }
+}
