@@ -22,19 +22,12 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        background: theme.palette.sectionStyles.text?.background || theme.palette.backgrounds.main,
-        color: theme.palette.sectionStyles.text?.text || theme.palette.text.primary,
         position: 'relative',
         overflow: 'hidden'
     },
     container: {
         width: '100%',
-        maxWidth: 1016,
-        display: 'flex',
-        justifyContent: 'space-between',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        zIndex: 2
+        maxWidth: 1016
     },
     '@media (max-width: 1000px)': {
         root: {
