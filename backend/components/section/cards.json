@@ -12,7 +12,7 @@
     "cards": {
       "type": "component",
       "repeatable": true,
-      "component": "component.item"
+      "component": "component.card"
     }
   }
 }
