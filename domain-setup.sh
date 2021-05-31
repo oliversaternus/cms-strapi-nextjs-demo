@@ -1,50 +1,46 @@
 #!/bin/bash
 
-# add domains to nginx
-
+project_name=($(jq '.git.project' config.json))
 main_domain=($(jq '.domains.frontend[0]' config.json))
 frontend_domain_array=($(jq -r '.domains.frontend' config.json  | tr -d '[]," '))
 backend_domain_array=($(jq -r '.domains.backend' config.json  | tr -d '[]," '))
 
+port_backend=($(jq '.ports.backend' config.json))
+port_frontend=($(jq '.ports.backend' config.json))
+
 domain_certbot_args=""
+frontend_nginx_args=""
+backend_nginx_args=""
 
 for domain in "${frontend_domain_array[@]}"
 do
 	$domain_certbot_args .= " -d "
 	$domain_certbot_args .= $domain
+	
+	$frontend_nginx_args .= " "
+	$frontend_nginx_args .= $domain
 done
 
 for domain in "${backend_domain_array[@]}"
 do
 	$domain_certbot_args .= " -d "
 	$domain_certbot_args .= $domain
+	
+	$backend_nginx_args .= " "
+	$backend_nginx_args .= $domain
 done
 
 # setup letsencrypt
 
 sudo systemctl stop nginx
 
-echo "sudo systemctl stop nginx
-certbot renew
-sudo systemctl start nginx" >> /home/letsencrypt.sh
 certbot certonly --standalone "$domain_certbot_args"
-(crontab -l ; echo "10 3 1 * * /home/letsencrypt.sh") | crontab -
 
 # setup proxy
 
 echo "server {
-	listen 80;
-	return 301 https://\$host\$request_uri;
-}
-
-map \$http_upgrade \$connection_upgrade {
-    default upgrade;
-    ''      close;
-}
-	
-server {
 	listen 443;
-	server_name ${domain_frontend} ${domain_frontend_2} ${domain_frontend_3} ${domain_frontend_4};
+	server_name ${frontend_nginx_args};
 		
 	gzip 				on;
 	gzip_min_length 	10240;
@@ -53,8 +49,8 @@ server {
 	gzip_disable 		\"MSIE [1-6]\.\";
 	gunzip 				on;
 
-	ssl_certificate           /etc/letsencrypt/live/${domain_frontend}/fullchain.pem;
-	ssl_certificate_key       /etc/letsencrypt/live/${domain_frontend}/privkey.pem;
+	ssl_certificate           /etc/letsencrypt/live/${main_domain}/fullchain.pem;
+	ssl_certificate_key       /etc/letsencrypt/live/${main_domain}/privkey.pem;
 
 	ssl on;
 	ssl_session_cache  builtin:1000  shared:SSL:10m;
@@ -62,7 +58,7 @@ server {
 	ssl_ciphers HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
 	ssl_prefer_server_ciphers on;
 
-	access_log            /var/log/nginx/${domain_frontend};
+	access_log            /var/log/nginx/${main_domain};
 
 	location / {
 
@@ -83,7 +79,7 @@ server {
 	
 server {
 	listen 443;
-	server_name ${domain_backend} ${domain_backend_2} ${domain_backend_3} ${domain_backend_4};
+	server_name ${backend_nginx_args};
 		
 	gzip 				on;
 	gzip_min_length 	10240;
@@ -92,8 +88,8 @@ server {
 	gzip_disable 		\"MSIE [1-6]\.\";
 	gunzip 				on;
 
-	ssl_certificate           /etc/letsencrypt/live/${domain_frontend}/fullchain.pem;
-	ssl_certificate_key       /etc/letsencrypt/live/${domain_frontend}/privkey.pem;
+	ssl_certificate           /etc/letsencrypt/live/${main_domain}/fullchain.pem;
+	ssl_certificate_key       /etc/letsencrypt/live/${main_domain}/privkey.pem;
 
 	ssl on;
 	ssl_session_cache  builtin:1000  shared:SSL:10m;
@@ -101,7 +97,7 @@ server {
 	ssl_ciphers HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
 	ssl_prefer_server_ciphers on;
 
-	access_log            /var/log/nginx/${domain_backend};
+	access_log            /var/log/nginx/${main_domain};
 
 	location / {
 
@@ -118,4 +114,10 @@ server {
 
 		proxy_redirect      http://localhost:${port_backend}/ https://\$host/;
 	}
-}" > /etc/nginx/sites-avail
+}" > "/etc/nginx/${project_name}.conf"
+
+echo "
+include    /etc/nginx/${project_name}.conf;
+" >> /etc/nginx/sites-available/default
+
+sudo systemctl start nginx
