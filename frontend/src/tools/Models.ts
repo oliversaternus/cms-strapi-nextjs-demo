@@ -174,7 +174,6 @@ export type CardsSectionItem = {
     content?: string;
     id: number;
     image?: Image;
-    variant?: 'standart' | 'person';
 };
 
 export type BannerSection = {
