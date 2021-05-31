@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 const Columns: React.FC<ColumnsProps> = (props) => {
     const { className, style, columns } = props;
     const classes = useStyles();
-    const parsedContent = useMemo(() => columns.items.map(column => parse(column.content || '')), [columns]);
+    const parsedContent = useMemo(() => columns.columns.map(column => parse(column.content || '')), [columns]);
     return (
         <section
             style={style}
@@ -72,7 +72,7 @@ const Columns: React.FC<ColumnsProps> = (props) => {
                     {columns.headline}
                 </div>
                 <div className={classes.columnsContainer}>
-                    {columns.items.map((column, index) =>
+                    {columns.columns.map((column, index) =>
                         <div dangerouslySetInnerHTML={{ __html: parsedContent[index] }}>
 
                         </div>

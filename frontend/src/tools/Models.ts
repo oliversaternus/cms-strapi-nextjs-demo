@@ -174,8 +174,6 @@ export type CardsSectionItem = {
     content?: string;
     id: number;
     image?: Image;
-    link?: string;
-    linkText?: string;
     variant?: 'standart' | 'person';
 };
 
@@ -202,7 +200,7 @@ export type ColumnsSection = {
     id: number;
     identifier?: string;
     headline?: string;
-    items: ColumnsSectionItem[];
+    columns: ColumnsSectionItem[];
 };
 
 export type ColumnsSectionItem = {
@@ -214,7 +212,7 @@ export type TestimonialsSection = {
     __component: string;
     id: number;
     identifier?: string;
-    items: TestimonialsSectionItem[];
+    testimonials: TestimonialsSectionItem[];
 };
 
 export type TestimonialsSectionItem = {
