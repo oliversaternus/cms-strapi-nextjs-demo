@@ -61,66 +61,6 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     breaker: {
         width: '0%'
     },
-    heading: {
-        color: theme.palette.sectionStyles.gallery?.text || theme.palette.text.primary,
-        '& h1': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& h2': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& h3': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& h4': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& h5': {
-            paddingTop: 6,
-            paddingBottom: 6,
-            margin: 0,
-            fontSize: 32,
-            fontWeight: 500
-        },
-        '& p': {
-            margin: 0,
-            fontSize: 16,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.gallery?.text || theme.palette.text.primary
-        },
-        '& ul': {
-            margin: 0,
-            paddingBottom: 32,
-            fontSize: 16,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.gallery?.text || theme.palette.text.primary,
-            paddingLeft: 18
-        },
-        '& ol': {
-            margin: 0,
-            paddingBottom: 32,
-            fontSize: 16,
-            fontWeight: 300,
-            color: theme.palette.sectionStyles.gallery?.text || theme.palette.text.primary,
-            paddingLeft: 18
-        }
-    },
     '@media (max-width: 1000px)': {
         rect: {
             flexBasis: '50%',
@@ -158,7 +98,7 @@ const Gallery: React.FC<GalleryProps> = (props) => {
             id={gallery.identifier}
         >
             {gallery.heading &&
-                <div className={classes.heading} dangerouslySetInnerHTML={{ __html: parsedHeading }} />}
+                <div dangerouslySetInnerHTML={{ __html: parsedHeading }} />}
             <div className={classes.container}>
                 {gallery.images?.map((image, index) =>
                     <div key={image.id} className={clsx(classes.item, index % 6 === 1 ? classes.square : classes.rect)}>

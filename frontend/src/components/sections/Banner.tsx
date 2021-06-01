@@ -4,7 +4,6 @@ import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { BannerSection } from '../../tools/Models';
 import { parse } from 'marked';
 import { useMemo } from "react";
-import Button from '../styledComponents/StyledButton';
 import Image from '../styledComponents/StyledImage';
 
 interface BannerProps {
@@ -80,20 +79,6 @@ const Banner: React.FC<BannerProps> = (props) => {
                 <div dangerouslySetInnerHTML={{ __html: parsedContent }}>
 
                 </div>
-                {banner.button &&
-                    <Button
-                        className={classes.button}
-                        _color='light'
-                        link={banner.button?.link}
-                        trackingEvent={{
-                            category: 'Interaction',
-                            action: 'Clicked Banner' + (banner.identifier ? ' #' + banner.identifier : ''),
-                            label: banner.button.content
-                        }}
-                    >
-                        {banner.button.content}
-                    </Button>
-                }
                 {children}
             </div>
             {banner.image &&

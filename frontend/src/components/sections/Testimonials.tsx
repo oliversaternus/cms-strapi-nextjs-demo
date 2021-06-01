@@ -113,14 +113,14 @@ const TestimonialsItem: React.FC<TestimonialsSectionItem> = (props) => {
 const Testimonials: React.FC<TestimonialsProps> = (props) => {
     const { className, style, testimonials } = props;
     const classes = useStyles();
-    const [selected, setSelected] = React.useState(testimonials.items[0]);
+    const [selected, setSelected] = React.useState(testimonials.testimonials[0]);
 
     const selectNext = () => {
-        const currentIndex = testimonials.items.findIndex(testimonial => testimonial.id === selected.id);
-        if (currentIndex !== -1 && currentIndex + 1 < testimonials.items.length) {
-            setSelected(testimonials.items[currentIndex + 1]);
+        const currentIndex = testimonials.testimonials.findIndex(testimonial => testimonial.id === selected.id);
+        if (currentIndex !== -1 && currentIndex + 1 < testimonials.testimonials.length) {
+            setSelected(testimonials.testimonials[currentIndex + 1]);
         } else {
-            setSelected(testimonials.items[0]);
+            setSelected(testimonials.testimonials[0]);
         }
     };
 

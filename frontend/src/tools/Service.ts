@@ -1,7 +1,6 @@
 import { Post, PostQuery, Response, Page, Message, GlobalData, Integrations, CookieConfig } from './Models';
 import { stringify } from 'qs';
-
-export const apiBaseUrl = 'http://localhost:1337';
+import { apiBaseUrl } from '../../config.json';
 
 const invokeApi = async <T>(path: string, query: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', body?: any, noAuth?: boolean): Promise<Response<T>> => {
     try {
