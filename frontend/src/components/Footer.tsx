@@ -143,7 +143,7 @@ const Footer: React.FC<FooterProps> = ({ columns, logoSrc, copyright }) => {
                                 <div className={classes.title}>{column.title}</div>
                                 {column.links?.map(link =>
                                     <Link href={link.path + ''} key={link.id}>
-                                        <a target="_self" className={classes.link}>{link.link}</a>
+                                        <a target="_self" className={classes.link}>{link.caption}</a>
                                     </Link>
                                 )}
                             </div>

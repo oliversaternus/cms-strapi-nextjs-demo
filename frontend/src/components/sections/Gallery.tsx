@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useRef, useEffect } from "react";
 import clsx from "clsx";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { Theme } from "@material-ui/core";
@@ -11,6 +11,16 @@ interface GalleryProps {
     style?: React.CSSProperties;
     className?: string;
 }
+
+// declare some typing for vanilla JS class
+declare class FsLightbox {
+    props: {
+        sources: string[];
+        [key: string]: any;
+    };
+    open: (index?: number) => void;
+    [key: string]: any;
+};
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
@@ -58,6 +68,12 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         backgroundPosition: 'top center',
         transition: 'transform 0.225s linear'
     },
+    clickable: {
+        cursor: 'pointer',
+        '&:hover': {
+            transform: 'scale(1.048)'
+        }
+    },
     breaker: {
         width: '0%'
     },
@@ -90,6 +106,22 @@ const Gallery: React.FC<GalleryProps> = (props) => {
     const { className, style, gallery } = props;
     const classes = useStyles();
     const parsedHeading = useMemo(() => parse(gallery.heading || ''), [gallery]);
+    const lightBoxRef = useRef<FsLightbox | null>(null);
+
+    useEffect(() => {
+        const initialize = async () => {
+            // dynamically load vanilla JS module
+            await import('../../../external/fslightbox/fslightbox');
+            const lightbox = new FsLightbox();
+            lightbox.props.sources = gallery.images?.map(image => (image.url)) || [];
+            lightBoxRef.current = lightbox;
+        }
+        initialize();
+    }, [gallery]);
+
+    const handleClick = (index: number) => () => {
+        lightBoxRef.current?.open?.(index);
+    };
 
     return (
         <section
@@ -102,9 +134,9 @@ const Gallery: React.FC<GalleryProps> = (props) => {
             <div className={classes.container}>
                 {gallery.images?.map((image, index) =>
                     <div key={image.id} className={clsx(classes.item, index % 6 === 1 ? classes.square : classes.rect)}>
-                        <div className={classes.imageContainer}>
+                        <div className={classes.imageContainer} onClick={handleClick(index)}>
                             <Image
-                                className={classes.image}
+                                className={clsx(classes.image, classes.clickable)}
                                 src={image.url}
                                 previewUrl={image.previewUrl}
                             />

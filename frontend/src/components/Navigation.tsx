@@ -142,6 +142,7 @@ const useStyles = makeStyles((theme: Theme) =>
             flexDirection: 'column'
         },
         link: {
+            padding: 0,
             display: 'flex',
             alignItems: 'center',
             fontSize: 16,
@@ -152,6 +153,7 @@ const useStyles = makeStyles((theme: Theme) =>
             userSelect: 'none',
             WebkitTapHighlightColor: 'transparent',
             '&:hover': {
+                transform: 'none',
                 textDecoration: 'none',
                 color: theme.palette.componentStyles.navigation?.main.textLight || theme.palette.primary.light
             }
@@ -181,6 +183,10 @@ const useStyles = makeStyles((theme: Theme) =>
             fontWeight: 400,
             margin: 0,
             padding: 12
+        },
+        subLink: {
+            paddingLeft: 8,
+            paddingRight: 8
         },
         mobileSubLink: {
             fontSize: 18,
@@ -310,7 +316,7 @@ const Navigation: React.FC<NavigationProps> = ({ transparent, links, logoSrc }) 
                                                                 onClick={() => setSelectedLinkId(undefined)}
                                                             >
                                                                 <Link href={item.path + ''} >
-                                                                    <a target="_self" className={clsx(classes.link, classes.menuLink)}>{item.link}</a>
+                                                                    <a target="_self" className={clsx(classes.link, classes.menuLink, classes.subLink)}>{item.caption}</a>
                                                                 </Link>
                                                             </MenuItem>
                                                         )}
@@ -355,7 +361,7 @@ const Navigation: React.FC<NavigationProps> = ({ transparent, links, logoSrc }) 
                             <AccordionDetails className={classes.details}>
                                 {links?.[index]?.links?.map(item =>
                                     <Link href={item.path + ''} key={item.id}>
-                                        <a className={clsx(classes.link, classes.mobile, classes.mobileSubLink)} onClick={handleCloseMenu}>{item.link}</a>
+                                        <a className={clsx(classes.link, classes.mobile, classes.mobileSubLink)} onClick={handleCloseMenu}>{item.caption}</a>
                                     </Link>
                                 )}
                             </AccordionDetails>

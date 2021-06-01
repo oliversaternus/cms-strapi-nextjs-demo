@@ -1,6 +1,8 @@
 import { Post, PostQuery, Response, Page, Message, GlobalData, Integrations, CookieConfig } from './Models';
 import { stringify } from 'qs';
-import { apiBaseUrl } from '../../config.json';
+import config from '../../config.json';
+
+const { apiBaseUrl } = config;
 
 const invokeApi = async <T>(path: string, query: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', body?: any, noAuth?: boolean): Promise<Response<T>> => {
     try {

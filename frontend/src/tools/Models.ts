@@ -47,7 +47,7 @@ export type NavigationArea = Array<{
     title?: string;
     links?: Array<{
         id: number;
-        link?: string;
+        caption?: string;
         path?: string;
     }>;
 }>;
@@ -198,7 +198,7 @@ export type ColumnsSection = {
     __component: string;
     id: number;
     identifier?: string;
-    headline?: string;
+    heading?: string;
     columns: ColumnsSectionItem[];
 };
 
@@ -211,6 +211,7 @@ export type TestimonialsSection = {
     __component: string;
     id: number;
     identifier?: string;
+    heading?: string;
     testimonials: TestimonialsSectionItem[];
 };
 

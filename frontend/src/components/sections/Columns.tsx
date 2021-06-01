@@ -39,8 +39,20 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         width: '100%',
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         flexDirection: 'row'
+    },
+    column1: {
+        flex: '0 0 100%',
+        maxWidth: '100%',
+    },
+    column2: {
+        flex: '0 0 50%',
+        maxWidth: 'calc(50% - 12px)',
+    },
+    column3: {
+        flex: '0 0 33.333%',
+        maxWidth: 'calc(33.333% - 12px)',
     },
     headline: {
         width: '100%'
@@ -53,14 +65,31 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         },
         columnsContainer: {
             flexDirection: 'column'
-        }
+        },
+        column: {
+            flex: '0 0 100%',
+            maxWidth: '100%',
+        },
     }
 }));
 
 const Columns: React.FC<ColumnsProps> = (props) => {
     const { className, style, columns } = props;
     const classes = useStyles();
+    const parsedHeading = useMemo(() => parse(columns.heading || ''), [columns]);
     const parsedContent = useMemo(() => columns.columns.map(column => parse(column.content || '')), [columns]);
+
+    const getColumnsClass = (count: number) => {
+        switch (count) {
+            case 1:
+                return classes.column1;
+            case 2:
+                return classes.column2;
+            case 3:
+                return classes.column3;
+        }
+    }
+
     return (
         <section
             style={style}
@@ -68,12 +97,10 @@ const Columns: React.FC<ColumnsProps> = (props) => {
             id={columns.identifier}
         >
             <div className={clsx(classes.container)}>
-                <div className={classes.headline}>
-                    {columns.headline}
-                </div>
+                {columns.heading && <div dangerouslySetInnerHTML={{ __html: parsedHeading }} />}
                 <div className={classes.columnsContainer}>
                     {columns.columns.map((column, index) =>
-                        <div dangerouslySetInnerHTML={{ __html: parsedContent[index] }}>
+                        <div className={getColumnsClass(columns.columns.length)} dangerouslySetInnerHTML={{ __html: parsedContent[index] }}>
 
                         </div>
                     )}

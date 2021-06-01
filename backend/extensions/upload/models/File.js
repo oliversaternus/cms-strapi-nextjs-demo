@@ -10,7 +10,7 @@ module.exports = {
             let previewData;
             for (const format of Object.values(formats || {})) {
                 if (format.url.startsWith('/')) {
-                    format.url = strapi.config.get('server.url', 'http://localhost:1337') + url;
+                    format.url = strapi.config.get('server.url', 'http://localhost:1337') + format.url;
                 }
             }
             if (url.startsWith('/')) {
@@ -33,7 +33,7 @@ module.exports = {
             let { url, formats } = data;
             for (const format of Object.values(formats || {})) {
                 if (format.url && format.url.startsWith('/')) {
-                    format.url = strapi.config.get('server.url', 'http://localhost:1337') + url;
+                    format.url = strapi.config.get('server.url', 'http://localhost:1337') + format.url;
                 }
             }
             if (url && url.startsWith('/')) {
