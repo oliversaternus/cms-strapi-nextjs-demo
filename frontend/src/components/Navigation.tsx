@@ -186,7 +186,10 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         subLink: {
             paddingLeft: 8,
-            paddingRight: 8
+            paddingRight: 8,
+            '&:hover': {
+                color: theme.palette.componentStyles.navigation?.main.text || theme.palette.text.primary
+            }
         },
         mobileSubLink: {
             fontSize: 18,

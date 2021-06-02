@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         headline: {
             width: '100%',
             paddingBottom: 24
-        }
+        }   
     },
     '@media (max-width: 800px)': {
         root: {

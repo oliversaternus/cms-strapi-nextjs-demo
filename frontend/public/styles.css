@@ -215,13 +215,11 @@ table {
     border-collapse: collapse;
     font-size: 18px;
     font-weight: 400;
-    display: block;
-    overflow-x: auto;
     width: 100%;
+    overflow-wrap: break-word;
 }
 
 td {
-    max-width: 600px;
     padding: 8px;
 }
 
@@ -234,7 +232,7 @@ th {
     color: var(--white);
 }
 
-th:first-child {
+th {
     text-align: left;
 }
 

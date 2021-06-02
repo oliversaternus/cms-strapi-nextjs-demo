@@ -72,7 +72,7 @@ export const themeDefault = createMuiTheme({
   },
   palette: {
     primary: {
-      main: '#405166',
+      main: '#377dff',
       contrastText: '#ffffff'
     },
     secondary: {
@@ -109,7 +109,7 @@ export const themeDefault = createMuiTheme({
         textShadow: 'rgb(64, 81, 102)'
       },
       banner: {
-        background: 'linear-gradient(150deg,rgba(64, 81, 102,.9) 0%,rgba(64, 81, 102,.85) 100%)',
+        background: 'linear-gradient(150deg,rgba(84, 69, 138,.8) 0%,rgba(84, 69, 138,.4) 100%)',
         text: '#ffffff'
       },
       contact: {
