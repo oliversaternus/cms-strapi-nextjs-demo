@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
         width: '100%',
         padding: 48,
-        paddingTop: 96,
-        paddingBottom: 96,
+        paddingTop: 48,
+        paddingBottom: 48,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         justifyContent: 'center',
         flexDirection: 'column',
         alignItems: 'center'
+    },
+    heading: {
+        paddingBottom: 24
     },
     quoteContainer: {
         display: 'flex',
@@ -84,13 +87,13 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         headline: {
             width: '100%',
             paddingBottom: 24
-        }   
+        }
     },
     '@media (max-width: 800px)': {
         root: {
             padding: 32,
             paddingTop: 48,
-            paddingBottom: 48
+            paddingBottom: 48,
         }
     }
 }));
@@ -169,7 +172,7 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
             id={testimonials.identifier}
         >
             {testimonials.heading &&
-                <div dangerouslySetInnerHTML={{ __html: parsedHeading }} />}
+                <div className={classes.heading} dangerouslySetInnerHTML={{ __html: parsedHeading }} />}
             <div className={clsx(classes.container)}>
                 <TestimonialsItemWrapper visible={visible} item={debouncedSelected} />
             </div>

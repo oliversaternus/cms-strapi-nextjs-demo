@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
         width: '100%',
         padding: 48,
-        paddingTop: 96,
-        paddingBottom: 96,
+        paddingTop: 48,
+        paddingBottom: 48,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -54,19 +54,27 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         flex: '0 0 33.333%',
         maxWidth: 'calc(33.333% - 12px)',
     },
-    headline: {
-        width: '100%'
+    heading: {
+        paddingBottom: 24
     },
     '@media (max-width: 1000px)': {
         root: {
             padding: 32,
+            paddingTop: 48,
             paddingBottom: 48,
-            paddingTop: 48
         },
         columnsContainer: {
             flexDirection: 'column'
         },
-        column: {
+        column1: {
+            flex: '0 0 100%',
+            maxWidth: '100%',
+        },
+        column2: {
+            flex: '0 0 100%',
+            maxWidth: '100%',
+        },
+        column3: {
             flex: '0 0 100%',
             maxWidth: '100%',
         },
@@ -97,7 +105,7 @@ const Columns: React.FC<ColumnsProps> = (props) => {
             id={columns.identifier}
         >
             <div className={clsx(classes.container)}>
-                {columns.heading && <div dangerouslySetInnerHTML={{ __html: parsedHeading }} />}
+                {columns.heading && <div className={classes.heading} dangerouslySetInnerHTML={{ __html: parsedHeading }} />}
                 <div className={classes.columnsContainer}>
                     {columns.columns.map((column, index) =>
                         <div className={getColumnsClass(columns.columns.length)} dangerouslySetInnerHTML={{ __html: parsedContent[index] }}>

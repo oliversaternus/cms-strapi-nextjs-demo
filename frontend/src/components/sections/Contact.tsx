@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
         width: '100%',
         padding: 48,
-        paddingTop: 96,
-        paddingBottom: 96,
+        paddingTop: 48,
+        paddingBottom: 48,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -57,6 +57,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     sendButton: {
         marginTop: 12
     },
+    heading: {
+        paddingBottom: 24
+    },
     '@media (max-width: 1000px)': {
         textContent: {
             width: '100%'
@@ -70,7 +73,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         root: {
             padding: 32,
             paddingTop: 48,
-            paddingBottom: 48
+            paddingBottom: 48,
         }
     }
 }));
@@ -121,7 +124,7 @@ const Contact: React.FC<ContactProps> = (props) => {
             id={contact.identifier}
         >
             <div className={classes.container}>
-                <div dangerouslySetInnerHTML={{ __html: parsedContent }}></div>
+                <div className={classes.heading} dangerouslySetInnerHTML={{ __html: parsedContent }}></div>
                 <StyledInput
                     placeholder='First Name'
                     className={classes.input}

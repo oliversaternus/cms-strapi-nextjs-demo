@@ -20,8 +20,8 @@ interface CardsItemProps {
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
         width: '100%',
-        paddingTop: 96,
-        paddingBottom: 96,
+        paddingTop: 48,
+        paddingBottom: 48,
         background: theme.palette.sectionStyles.cards?.background || theme.palette.backgrounds.main,
         display: 'flex',
         flexDirection: 'column',
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         root: {
             padding: 32,
             paddingTop: 48,
-            paddingBottom: 48
+            paddingBottom: 48,
         },
         heading: {
             paddingBottom: 24

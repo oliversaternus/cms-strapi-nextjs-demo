@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
         width: '100%',
         padding: 48,
-        paddingTop: 96,
-        paddingBottom: 96,
+        paddingTop: 48,
+        paddingBottom: 48,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     '@media (max-width: 1000px)': {
         root: {
             padding: 32,
+            paddingTop: 48,
             paddingBottom: 48,
-            paddingTop: 48
         }
     }
 }));

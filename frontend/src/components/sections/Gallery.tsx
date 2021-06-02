@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
         width: '100%',
         padding: 48,
-        paddingTop: 96,
-        paddingBottom: 96,
+        paddingTop: 48,
+        paddingBottom: 48,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -77,6 +77,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     breaker: {
         width: '0%'
     },
+    heading: {
+        paddingBottom: 24
+    },
     '@media (max-width: 1000px)': {
         rect: {
             flexBasis: '50%',
@@ -89,7 +92,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         root: {
             padding: 32,
             paddingTop: 48,
-            paddingBottom: 48
+            paddingBottom: 48,
         }
     },
     '@media (max-width: 600px)': {
@@ -130,7 +133,7 @@ const Gallery: React.FC<GalleryProps> = (props) => {
             id={gallery.identifier}
         >
             {gallery.heading &&
-                <div dangerouslySetInnerHTML={{ __html: parsedHeading }} />}
+                <div className={classes.heading} dangerouslySetInnerHTML={{ __html: parsedHeading }} />}
             <div className={classes.container}>
                 {gallery.images?.map((image, index) =>
                     <div key={image.id} className={clsx(classes.item, index % 6 === 1 ? classes.square : classes.rect)}>

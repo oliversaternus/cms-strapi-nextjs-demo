@@ -248,12 +248,36 @@ strong {
 * Markdown styles for individual sections
 */
 
+.section-hero + section {
+    padding-top: 96px;
+}
+
+.section-hero + .section-banner {
+    padding-top: 128px;
+}
+
+.section-hero + .section-hero {
+    padding-top: 128px;
+}
+
 .section-hero * {
     color: var(--white);
 }
 
 .section-banner * {
     color: var(--white);
+}
+
+.section-banner + section {
+    padding-top: 96px;
+}
+
+.section-banner + .section-hero {
+    padding-top: 128px;
+}
+
+.section-banner + .section-banner {
+    padding-top: 128px;
 }
 
 .section-cards p {
