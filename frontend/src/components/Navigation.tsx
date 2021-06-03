@@ -123,7 +123,7 @@ const useStyles = makeStyles((theme: Theme) =>
             paddingLeft: 0
         },
         logoImage: {
-            height: 48,
+            height: 84,
             marginRight: 8
         },
         linkContainer: {
@@ -145,9 +145,9 @@ const useStyles = makeStyles((theme: Theme) =>
             padding: 0,
             display: 'flex',
             alignItems: 'center',
-            fontSize: 16,
+            fontSize: 18,
             margin: 12,
-            fontWeight: 300,
+            fontWeight: 400,
             color: theme.palette.componentStyles.navigation?.main.text || theme.palette.text.primary,
             transition: 'color 0.16s linear',
             userSelect: 'none',

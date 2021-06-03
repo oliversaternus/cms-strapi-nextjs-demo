@@ -63,7 +63,8 @@ const useCardStyles = makeStyles((theme: Theme) => createStyles({
         justifyContent: 'flex-start',
         padding: 24,
         borderRadius: 4,
-        transition: 'transform 0.18s ease-in'
+        transition: 'transform 0.18s ease-in',
+        boxShadow: '0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%)'
     },
     image: {
         width: '100%',

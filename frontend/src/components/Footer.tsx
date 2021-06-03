@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
             padding: 32
         },
         logoImage: {
-            height: 44,
+            height: 84,
             marginRight: 8
         },
         title: {
@@ -61,55 +61,9 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             alignItems: 'center'
         },
-        copyright: {
-            '& h1': {
-                fontSize: 14,
-                fontWeight: 300,
-                padding: 12
-            },
-            '& h2': {
-                fontSize: 14,
-                fontWeight: 300,
-                padding: 12
-            },
-            '& h3': {
-                fontSize: 14,
-                fontWeight: 300,
-                padding: 12
-            },
-            '& h4': {
-                fontSize: 14,
-                fontWeight: 300,
-                padding: 12
-            },
-            '& h5': {
-                fontSize: 14,
-                fontWeight: 300,
-                padding: 12
-            },
-            '& p': {
-                fontSize: 14,
-                fontWeight: 300,
-                padding: 12
-            },
-            '& ul': {
-                margin: 0,
-                paddingLeft: 18,
-                fontSize: 14,
-                fontWeight: 300,
-                padding: 12
-            },
-            '& ol': {
-                margin: 0,
-                paddingLeft: 18,
-                fontSize: 14,
-                fontWeight: 300,
-                padding: 12
-            },
-        },
         link: {
-            fontSize: 14,
-            fontWeight: 300,
+            fontSize: 16,
+            fontWeight: 400,
             marginTop: 6,
             marginBottom: 6,
             color: theme.palette.componentStyles.footer?.text || theme.palette.text.primary,
@@ -152,7 +106,7 @@ const Footer: React.FC<FooterProps> = ({ columns, logoSrc, copyright }) => {
                 </div>
                 <div className={classes.subFooter}>
                     <img src={logoSrc} className={classes.logoImage} />
-                    <div className={classes.copyright} dangerouslySetInnerHTML={{ __html: parsedCopyright }}></div>
+                    <div dangerouslySetInnerHTML={{ __html: parsedCopyright }}></div>
                 </div>
             </div>
         </>

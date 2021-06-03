@@ -72,7 +72,7 @@ export const themeDefault = createMuiTheme({
   },
   palette: {
     primary: {
-      main: '#377dff',
+      main: '#2d1582',
       contrastText: '#ffffff'
     },
     secondary: {
@@ -104,12 +104,12 @@ export const themeDefault = createMuiTheme({
     },
     sectionStyles: {
       hero: {
-        background: 'linear-gradient(150deg,rgba(64, 81, 102,.4) 0%,rgba(64, 81, 102,.4) 100%)',
+        background: 'linear-gradient(150deg,rgba(76, 64, 120,.4) 0%,rgba(76, 64, 120,.4) 100%)',
         text: '#ffffff',
         textShadow: 'rgb(64, 81, 102)'
       },
       banner: {
-        background: 'linear-gradient(150deg,rgba(84, 69, 138,.8) 0%,rgba(84, 69, 138,.4) 100%)',
+        background: 'linear-gradient(150deg,rgba(96, 81, 150,.8) 0%,rgba(96, 81, 150,.6) 100%)',
         text: '#ffffff'
       },
       contact: {
