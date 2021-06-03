@@ -138,7 +138,6 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             alignItems: 'flex-start',
             justifyContent: 'center',
-            minHeight: '75%',
             flexDirection: 'column'
         },
         link: {
