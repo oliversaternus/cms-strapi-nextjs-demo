@@ -178,8 +178,8 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         mobile: {
             color: theme.palette.componentStyles.navigation?.dialog.text || theme.palette.text.primary,
-            fontSize: 24,
-            fontWeight: 400,
+            fontSize: 20,
+            fontWeight: 600,
             margin: 0,
             padding: 12
         },
@@ -191,7 +191,8 @@ const useStyles = makeStyles((theme: Theme) =>
             }
         },
         mobileSubLink: {
-            fontSize: 18,
+            fontSize: 16,
+            fontWeight: 400
         },
         menuButton: {
             position: 'fixed',
@@ -207,6 +208,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         navMenu: {
             background: theme.palette.componentStyles.navigation?.dialog.background || theme.palette.backgrounds.main,
+            paddingTop: '0px !important'
         },
         menuLink: {
             margin: 0
@@ -358,7 +360,7 @@ const Navigation: React.FC<NavigationProps> = ({ transparent, links, logoSrc }) 
                     {links?.map((link, index) => (link.links?.length || 0) > 1 ?
                         <Accordion key={link.id} square expanded={link.id === selectedAccordionLinkId} onChange={handleAccordionChange(link.id)}>
                             <AccordionSummary className={classes.summary} expandIcon={<ExpandIcon className={classes.expandIcon} />}>
-                                <Typography className={clsx(classes.link, classes.transparentLink, classes.mobile)}>{link.title}</Typography>
+                                <Typography className={clsx(classes.link, classes.mobile)}>{link.title}</Typography>
                             </AccordionSummary>
                             <AccordionDetails className={classes.details}>
                                 {links?.[index]?.links?.map(item =>

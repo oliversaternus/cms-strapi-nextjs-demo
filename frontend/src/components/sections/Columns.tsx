@@ -108,7 +108,7 @@ const Columns: React.FC<ColumnsProps> = (props) => {
                 {columns.heading && <div className={classes.heading} dangerouslySetInnerHTML={{ __html: parsedHeading }} />}
                 <div className={classes.columnsContainer}>
                     {columns.columns.map((column, index) =>
-                        <div className={getColumnsClass(columns.columns.length)} dangerouslySetInnerHTML={{ __html: parsedContent[index] }}>
+                        <div key={column.id} className={getColumnsClass(columns.columns.length)} dangerouslySetInnerHTML={{ __html: parsedContent[index] }}>
 
                         </div>
                     )}
